@@ -1,114 +1,517 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Behind the Grades: Mental Health Trends in Indian Students</title>
-  <style>
-    body {
-      font-family: Georgia, 'Times New Roman', serif;
-      background-color: #f5f5f5;
-      color: #222;
-      line-height: 1.7;
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 25px 50px;
-    }
-
-    .site-title {
-      background-color: #e6e6e6;
-      text-align: center;
-      font-size: 2.5em;
-      color: #0056d6;
-      padding: 30px 20px;
-      font-family: Arial, sans-serif;
-      font-weight: 500;
-      margin-bottom: 40px;
-    }
-
-    h2, h3 {
-      color: #1c2833;
-    }
-
-    h2 {
-      margin-top: 2em;
-      font-size: 1.5em;
-    }
-
-    h3 {
-      margin-top: 1.5em;
-      font-size: 1.2em;
-      color: #2874A6;
-    }
-
-    p {
-      margin-bottom: 1.2em;
-      font-size: 1.03em;
-    }
-
-    ul {
-      margin: 1em 0;
-      padding-left: 20px;
-    }
-
-    li {
-      margin-bottom: 12px;
-    }
-
-    a {
-      color: #1a5276;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .footer {
-      margin-top: 60px;
-      padding-top: 30px;
-      border-top: 1px solid #ccc;
-      font-size: 0.95em;
-      color: #555;
-    }
-  </style>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Behind the Grades: Mental Health Trends in Indian Students</title>
+ <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+ <script src="https://d3js.org/d3.v7.min.js"></script>
+ <style>
+   :root {
+     --primary-color: #3A5E8C;
+     --secondary-color: #90CCF4;
+     --accent-color: #F08C8C;
+     --background-color: #FFFFFF;
+     --text-color: #333333;
+     --section-bg: #F8F9FA;
+     --highlight: #E9F2FB;
+   }
+   
+   * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+   }
+   
+   body {
+     font-family: 'Source Sans Pro', sans-serif;
+     line-height: 1.6;
+     color: var(--text-color);
+     background-color: var(--background-color);
+   }
+   
+   .container {
+     max-width: 1200px;
+     margin: 0 auto;
+     padding: 0 20px;
+   }
+   
+   /* Header */
+   header {
+     background-color: var(--primary-color);
+     color: white;
+     padding: 60px 0 40px;
+   }
+   
+   .site-title {
+     font-family: 'Playfair Display', serif;
+     font-size: 3rem;
+     font-weight: 700;
+     margin-bottom: 10px;
+     letter-spacing: -0.5px;
+   }
+   
+   .site-subtitle {
+     font-family: 'Playfair Display', serif;
+     font-size: 1.5rem;
+     font-weight: 400;
+     font-style: italic;
+     opacity: 0.9;
+     max-width: 800px;
+   }
+   
+   /* Navigation */
+   nav {
+     background-color: white;
+     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+     position: sticky;
+     top: 0;
+     z-index: 100;
+   }
+   
+   .nav-container {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 15px 0;
+   }
+   
+   .logo {
+     font-family: 'Playfair Display', serif;
+     font-weight: 700;
+     color: var(--primary-color);
+     font-size: 1.3rem;
+     text-decoration: none;
+   }
+   
+   .nav-links {
+     display: flex;
+     list-style: none;
+   }
+   
+   .nav-links li {
+     margin-left: 30px;
+   }
+   
+   .nav-links a {
+     color: var(--text-color);
+     text-decoration: none;
+     font-weight: 600;
+     font-size: 0.95rem;
+     transition: color 0.3s;
+   }
+   
+   .nav-links a:hover {
+     color: var(--primary-color);
+   }
+   
+   /* Main content */
+   main {
+     padding: 50px 0;
+   }
+   
+   section {
+     margin-bottom: 70px;
+   }
+   
+   .intro-section {
+     margin-bottom: 50px;
+   }
+   
+   h2 {
+     font-family: 'Playfair Display', serif;
+     font-size: 2.2rem;
+     color: var(--primary-color);
+     margin-bottom: 20px;
+     position: relative;
+   }
+   
+   h2::after {
+     content: '';
+     position: absolute;
+     bottom: -10px;
+     left: 0;
+     width: 60px;
+     height: 3px;
+     background-color: var(--accent-color);
+   }
+   
+   h3 {
+     font-family: 'Playfair Display', serif;
+     font-size: 1.5rem;
+     margin: 30px 0 15px;
+     color: var(--primary-color);
+   }
+   
+   p {
+     margin-bottom: 20px;
+     font-size: 1.05rem;
+     line-height: 1.7;
+   }
+   
+   .highlight-box {
+     background-color: var(--highlight);
+     border-left: 4px solid var(--accent-color);
+     padding: 20px 25px;
+     margin: 30px 0;
+     border-radius: 0 4px 4px 0;
+   }
+   
+   .highlight-box p:last-child {
+     margin-bottom: 0;
+   }
+   
+   /* Visualization containers */
+   .visualization-section {
+     background-color: var(--section-bg);
+     border-radius: 8px;
+     padding: 40px;
+     margin: 40px 0;
+   }
+   
+   .visualization-container {
+     width: 100%;
+     height: 400px;
+     margin: 30px 0;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     border: 1px dashed #ccc;
+     background-color: white;
+     border-radius: 4px;
+   }
+   
+   .visualization-container p {
+     color: #888;
+     font-style: italic;
+   }
+   
+   .visualization-description {
+     margin-top: 20px;
+   }
+   
+   /* Interactive controls */
+   .interactive-controls {
+     background-color: white;
+     padding: 20px;
+     border-radius: 8px;
+     margin-bottom: 20px;
+     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+   }
+   
+   .interactive-controls select, 
+   .interactive-controls button {
+     padding: 8px 15px;
+     border: 1px solid #ddd;
+     border-radius: 4px;
+     margin-right: 10px;
+     font-family: inherit;
+   }
+   
+   .interactive-controls button {
+     background-color: var(--primary-color);
+     color: white;
+     border: none;
+     cursor: pointer;
+     transition: background-color 0.3s;
+   }
+   
+   .interactive-controls button:hover {
+     background-color: #2d4a70;
+   }
+   
+   /* Stats grid */
+   .stats-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+     gap: 20px;
+     margin: 30px 0;
+   }
+   
+   .stat-card {
+     background-color: white;
+     border-radius: 8px;
+     padding: 25px;
+     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+     text-align: center;
+   }
+   
+   .stat-number {
+     font-size: 2.5rem;
+     font-weight: 600;
+     color: var(--primary-color);
+     margin: 10px 0;
+   }
+   
+   .stat-label {
+     font-size: 1rem;
+     color: #666;
+     margin-bottom: 0;
+   }
+   
+   /* Footer */
+   footer {
+     background-color: var(--primary-color);
+     color: white;
+     padding: 50px 0 20px;
+     margin-top: 50px;
+   }
+   
+   .footer-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+     gap: 40px;
+     margin-bottom: 40px;
+   }
+   
+   .footer-column h3 {
+     color: white;
+     font-size: 1.2rem;
+     margin-top: 0;
+     margin-bottom: 20px;
+     font-family: 'Source Sans Pro', sans-serif;
+     font-weight: 600;
+   }
+   
+   .footer-column p, 
+   .footer-column a {
+     color: rgba(255,255,255,0.8);
+     margin-bottom: 10px;
+     display: block;
+     text-decoration: none;
+   }
+   
+   .footer-column a:hover {
+     color: white;
+   }
+   
+   .footer-bottom {
+     text-align: center;
+     padding-top: 20px;
+     border-top: 1px solid rgba(255,255,255,0.1);
+     font-size: 0.9rem;
+     color: rgba(255,255,255,0.6);
+   }
+   
+   /* Responsive adjustments */
+   @media (max-width: 768px) {
+     .site-title {
+       font-size: 2.5rem;
+     }
+     
+     .site-subtitle {
+       font-size: 1.2rem;
+     }
+     
+     .nav-container {
+       flex-direction: column;
+       padding: 15px 0;
+     }
+     
+     .nav-links {
+       margin-top: 15px;
+     }
+     
+     .nav-links li {
+       margin-left: 15px;
+       margin-right: 15px;
+     }
+     
+     .visualization-section {
+       padding: 25px;
+     }
+   }
+ </style>
 </head>
 <body>
+ <header>
+   <div class="container">
+     <h1 class="site-title">Behind the Grades: Mental Health Trends in Indian Students</h1>
+     <p class="site-subtitle">Exploring the hidden struggles beneath academic achievement</p>
+   </div>
+ </header>
+ 
+ <nav>
+   <div class="container nav-container">
+     <a href="#" class="logo">Student Mental Health</a>
+     <ul class="nav-links">
+       <li><a href="#introduction">Introduction</a></li>
+       <li><a href="#prevalence">Depression Prevalence</a></li>
+       <li><a href="#factors">Contributing Factors</a></li>
+       <li><a href="#geography">Geographic Analysis</a></li>
+       <li><a href="#recommendations">Recommendations</a></li>
+     </ul>
+   </div>
+ </nav>
+ 
+ <main class="container">
+   <section id="introduction" class="intro-section">
+     <h2>Introduction</h2>
+     <p>
+       [Introduction text will be added here]
+     </p>
+     
+     <div class="stats-grid">
+       <div class="stat-card">
+         <p class="stat-label">Students Surveyed</p>
+         <div class="stat-number">28,000+</div>
+         <p>University students across India</p>
+       </div>
+       <div class="stat-card">
+         <p class="stat-label">Depression Prevalence</p>
+         <div class="stat-number">60%+</div>
+         <p>Students reporting depression symptoms</p>
+       </div>
+       <div class="stat-card">
+         <p class="stat-label">Data Points</p>
+         <div class="stat-number">18</div>
+         <p>Factors analyzed per student</p>
+       </div>
+     </div>
+     
+     <div class="highlight-box">
+       <h3>About This Project</h3>
+       <p>
+         [Project description will be added here]
+       </p>
+     </div>
+   </section>
+   
+   <section id="prevalence" class="visualization-section">
+     <h2>Depression Prevalence</h2>
+     <p>
+       [Description text will be added here]
+     </p>
+     
+     <div class="visualization-container" id="pie-chart-container">
+       <p>Pie Chart Visualization Will Appear Here</p>
+     </div>
+     
+     <div class="visualization-description">
+       <h3>Key Insights</h3>
+       <p>
+         [Analysis of pie chart results will be added here]
+       </p>
+     </div>
+     
+     <div class="visualization-container" id="education-chart-container">
+       <p>Education Level Chart Will Appear Here</p>
+     </div>
+     
+     <div class="visualization-description">
+       <h3>Education Level Analysis</h3>
+       <p>
+         [Analysis of education level chart will be added here]
+       </p>
+     </div>
+   </section>
+   
+   <section id="factors" class="visualization-section">
+     <h2>Contributing Factors</h2>
+     <p>
+       [Description text will be added here]
+     </p>
+     
+     <div class="interactive-controls">
+       <label for="factor-select">Select factor to explore:</label>
+       <select id="factor-select">
+         <option value="sleep">Sleep Duration</option>
+         <option value="social-media">Social Media Usage</option>
+         <option value="academic">Academic Pressure</option>
+         <option value="family">Family History</option>
+       </select>
+       <button type="button">Update</button>
+     </div>
+     
+     <div class="visualization-container" id="factors-chart-container">
+       <p>Interactive Factors Visualization Will Appear Here</p>
+     </div>
+     
+     <div class="visualization-description">
+       <h3>Factors Analysis</h3>
+       <p>
+         [Analysis of factors visualization will be added here]
+       </p>
+     </div>
+   </section>
+   
+   <section id="geography" class="visualization-section">
+     <h2>Geographic Analysis</h2>
+     <p>
+       [Description text will be added here]
+     </p>
+     
+     <div class="visualization-container" id="map-container">
+       <p>Geographic Visualization Will Appear Here</p>
+     </div>
+     
+     <div class="visualization-description">
+       <h3>Regional Patterns</h3>
+       <p>
+         [Analysis of geographic visualization will be added here]
+       </p>
+     </div>
+   </section>
+   
+   <section id="recommendations">
+     <h2>Recommendations</h2>
+     <p>
+       [Recommendations text will be added here]
+     </p>
+     
+     <div class="highlight-box">
+       <h3>For Educational Institutions</h3>
+       <p>
+         [Recommendations for institutions will be added here]
+       </p>
+     </div>
+     
+     <div class="highlight-box">
+       <h3>For Students</h3>
+       <p>
+         [Recommendations for students will be added here]
+       </p>
+     </div>
+     
+     <div class="highlight-box">
+       <h3>For Parents and Families</h3>
+       <p>
+         [Recommendations for families will be added here]
+       </p>
+     </div>
+   </section>
+ </main>
+ 
+ <footer>
+   <div class="container">
+     <div class="footer-grid">
+       <div class="footer-column">
+         <h3>About This Project</h3>
+         <p>Data visualization project developed by Group 14 at DTU.</p>
+         <p>Analysis based on the Student Depression Dataset from Kaggle.</p>
+       </div>
+       <div class="footer-column">
+         <h3>Team Members</h3>
+         <p>Pawel Nepelski (s233537)</p>
+         <p>Henrietta Domokos (s233107)</p>
+         <p>Upasana Paul (s242577)</p>
+       </div>
+       <div class="footer-column">
+         <h3>Data Source</h3>
+         <p>Student Depression Dataset</p>
+         <a href="https://www.kaggle.com/datasets/adilshamim8/student-depression-dataset" target="_blank">Kaggle Dataset Link</a>
+       </div>
+     </div>
+     
+     <div class="footer-bottom">
+       <p>&copy; 2025 | DTU Data Visualization Course | Group 14</p>
+     </div>
+   </div>
+ </footer>
 
-  <div class="site-title">
-    Behind the Grades: Mental Health Trends in Indian Students
-  </div>
-
-  <p>This website explores how academic pressure, family expectations, and social dynamics influence mental health trends among Indian students. We aim to highlight the growing challenges faced by students and uncover patterns behind the statistics.</p>
-
-  <h2>Background</h2>
-  <p>India’s educational system is known for its rigor and competitiveness. With millions of students competing for limited seats in top colleges, stress, anxiety, and depression are increasingly common among youth.</p>
-
-  <h2>Key Themes</h2>
-  <ul>
-    <li><strong>Academic Pressure:</strong> High-stakes exams and performance-driven environments.</li>
-    <li><strong>Parental Expectations:</strong> Influence on career choice and emotional well-being.</li>
-    <li><strong>Social Stigma:</strong> Limited mental health awareness and resources.</li>
-    <li><strong>COVID-19 Impact:</strong> Increased isolation and disruption of academic routines.</li>
-  </ul>
-
-  <h2>Statistics at a Glance</h2>
-  <ul>
-    <li>1 in 4 Indian students report symptoms of anxiety or depression.</li>
-    <li>India has one of the highest suicide rates among youth globally.</li>
-    <li>Mental health services are underutilized due to stigma and lack of access.</li>
-  </ul>
-
-  <h2>Student Voices</h2>
-  <p>“Even after scoring 95%, I felt like I failed. The pressure never stops.”</p>
-  <p>“Therapy helped me cope, but I had to keep it a secret from my family.”</p>
-
-  <h2>Call to Action</h2>
-  <p>To build a healthier academic culture, we must prioritize emotional well-being. Schools, families, and policymakers need to work together to reduce pressure, normalize seeking help, and provide supportive environments for students to thrive.</p>
-
-  <div class="footer">
-    <p><strong>Authors:</strong> Your Research Team</p>
-    <p><strong>Date:</strong> May 2025</p>
-  </div>
-
+ <script>
+   // Placeholder for visualization scripts
+   // Actual implementation will be added later
+ </script>
 </body>
 </html>
