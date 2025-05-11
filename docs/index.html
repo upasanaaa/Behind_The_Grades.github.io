@@ -321,6 +321,21 @@
        padding: 25px;
      }
    }
+
+   img.chart {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  figcaption {
+    font-style: italic;
+    text-align: center;
+    color: #555;
+    font-size: 0.95rem;
+  }
+
  </style>
 </head>
 <body>
@@ -358,7 +373,7 @@
      <div class="stats-grid">
        <div class="stat-card">
          <p class="stat-label">Students Surveyed</p>
-         <div class="stat-number">28,000+</div>
+         <div class="stat-number">27,901</div>
          <p>University students across India</p>
        </div>
        <div class="stat-card">
@@ -367,8 +382,8 @@
          <p>Students reporting depression symptoms</p>
        </div>
        <div class="stat-card">
-         <p class="stat-label">Data Points</p>
-         <div class="stat-number">18</div>
+         <p class="stat-label">Data features</p>
+         <div class="stat-number">17</div>
          <p>Factors analyzed per student</p>
        </div>
      </div>
@@ -376,9 +391,72 @@
      <div class="highlight-box">
        <h3>About This Project</h3>
        <p>
-         Our analysis uses the Student Depression Dataset from Kaggle, which includes comprehensive information about students' mental health status, academic performance (CGPA), lifestyle habits (sleep patterns, social media usage), demographics (age, gender), and other mental health indicators (suicidal thoughts, family history of mental illness). Through interactive visualizations, we aim to tell a human story that goes beyond statistics and helps identify warning signs and risk factors for depression among students.
+         Our analysis uses the <a href="https://www.kaggle.com/datasets/adilshamim8/student-depression-dataset" >Student Depression Dataset</a> from Kaggle, which includes comprehensive information about students' mental health status, academic performance (CGPA), lifestyle habits (sleep patterns, social media usage), demographics (age, gender), and other mental health indicators (suicidal thoughts, family history of mental illness). Through interactive visualizations, we aim to tell a human story that goes beyond statistics and helps identify warning signs and risk factors for depression among students.
        </p>
      </div>
+   </section>
+
+   <section id="dataset" class="visualization-section">
+    <h3>Understanding the Dataset</h3>
+  
+    <p>
+      Before diving into visualizations and statistics, we took a step back to understand how this dataset actually looks like. Each row represents a student, the mental health of nearly 28,000 university students across India. But like any real-world dataset, it needed some tidying before we could ask it serious questions.
+    </p>
+  
+    <p>
+      Fortunately, the dataset had no missing values, really rare in survey data. Still, several columns contained long or inconsistent labels, and many responses were written as words instead of numbers. To make the dataset easier to work with, we performed a series of preprocessing steps to clean and convert the data while preserving its meaning.
+    </p>
+  
+    <ul style="padding-left: 10px; margin-bottom: 20px;">
+      <li><strong>Simplifying column names:</strong> Long labels like <em>"Have you ever had suicidal thoughts?"</em> were renamed to something more manageable, like <code>Suicidal_Thoughts</code>.</li>
+      <li><strong>Turning words into numbers:</strong> Yes/No answers were converted into binary format — 1 for “Yes,” 0 for “No.” This was applied to columns like <code>Suicidal_Thoughts</code> and <code>Family_History</code>.</li>
+      <li><strong>Ranking stress levels:</strong> Ordered categories such as <code>Financial_Stress</code> were encoded numerically — Low = 1, Medium = 2, High = 3 — so we could compare stress levels more meaningfully.</li>
+      <li><strong>Making time measurable:</strong> Sleep duration categories like “5–6 hours” or “Less than 5 hours” were mapped to estimated numeric values (e.g., 5 or 4 hours) for consistency.</li>
+      <li><strong>One-hot encoding:</strong> Variables like <code>Gender</code> and <code>Profession</code> were split into multiple binary columns so they could be analyzed without assuming any order or hierarchy.</li>
+    </ul>
+  
+    <p>
+      These changes made the much more dataset cleaner, we also become able to explore relationships between stress, lifestyle, and mental health in a much more precise way.
+    </p>
+  
+    <div style="display: flex; flex-direction: column; gap: 40px; margin-top: 40px;">
+  
+      <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+        <img src="../plots/gender_distribution.png" alt="Gender distribution" style="width: 300px; height: auto; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        <div>
+          <h4 style="margin-bottom: 10px; color: #3A5E8C;">Gender Distribution</h4>
+          <p style="max-width: 600px;">
+            This chart shows a relatively even mix of male and female respondents. It is an important detail that makes gender comparisons meaningful throughout the analysis.
+          </p>
+        </div>
+      </div>
+  
+      <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+        <img src="../plots/age_distribution.png" alt="Age distribution" style="width: 300px; height: auto; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        <div>
+          <h4 style="margin-bottom: 10px; color: #3A5E8C;">Age Distribution</h4>
+          <p style="max-width: 600px;">
+            Most students in the dataset are between 19 and 25 years old, which reflects the typical university demographic. This makes the data especially relevant for understanding challenges faced during the academic years.
+          </p>
+        </div>
+      </div>
+  
+      <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+        <img src="../plots/depression_pie_chart.png" alt="Depression prevalence pie chart" style="width: 300px; height: auto; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        <div>
+          <h4 style="margin-bottom: 10px; color: #3A5E8C;">Prevalence of Depression</h4>
+          <p style="max-width: 600px;">
+            Over half of the students surveyed show signs of depression. This chart shows the emotional core of the dataset and sets the stage for the deeper analyses that follow.
+          </p>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  
+    
+    
+    
    </section>
    
    <section id="prevalence" class="visualization-section">
@@ -440,20 +518,30 @@
    </section>
    
    <section id="geography" class="visualization-section">
-     <h2>Geographic Analysis</h2>
+     <h2>The map of depression</h2>
      <p>
-       Depression rates vary across different regions of India, reflecting differences in educational systems, cultural attitudes toward mental health, and available support resources. Our geographic analysis helps identify regional patterns and potential areas for targeted interventions.
-     </p>
+      Where you study may affect how you feel. To explore this, we mapped the depression rates of students across Indian cities using survey data from nearly 28,000 university students. Each dot on the map represents a city, 
+      colored from green to dark red depending on how many students reported symptoms of depression. The darker red the circle, the more students reported suicidal thoughts from that city.
+    </p>
      
-     <div class="visualization-container" id="map-container">
-       <p>Geographic Visualization Will Appear Here</p>
-     </div>
+    <div class="visualization-container" id="map-container" style="height: 500px; padding: 0;">
+      <iframe src="../city_depression_map_choropleth.html"
+              width="100%"
+              height="100%"
+              style="border: none; border-radius: 8px; display: block;"></iframe>
+    </div>
+    <p style="font-style: italic; color: #666; margin-top: 10px; text-align: center;">
+      Interactive map: Click ovon a city to see depression rates and student counts.
+    </p>
      
      <div class="visualization-description">
-       <h3>Regional Patterns</h3>
        <p>
-         Urban centers with highly competitive educational environments show particularly high rates of depression among students. However, the geographic distribution is complex, with significant variations even within regions. The map visualization above allows exploration of these regional patterns, providing context for where mental health resources might be most needed.
-       </p>
+        The results are striking. In many large cities, the rate of depression among students appears worryingly high. In some cities, more than half of the surveyed students reported signs of depression.
+        While this map does not explain <em>why</em> students are struggling, it gives us important infomations. Cities with higher stress environments, whether due to cost of living, academic pressure, or lack of support systems, tend to show deeper shades of red.
+        Click around, and the invisible patterns start to emerge. These are not just numbers. They are signals from young people who are often expected to perform under pressure but rarely asked how they're doing.
+
+      </p>
+
      </div>
    </section>
    
