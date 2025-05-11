@@ -491,28 +491,33 @@
    <section id="factors" class="visualization-section">
      <h2>Contributing Factors</h2>
      <p>
-       Multiple factors influence student mental health, from lifestyle choices to academic pressures. Our analysis examines how various aspects of student life correlate with depression, providing insights into potential risk factors and protective measures.
+       Multiple factors influence student mental health, from lifestyle choices to academic pressures. 
+       In this section we will explore how various aspects of student life correlate with depression, providing insights into potential risk factors and protective measures.
      </p>
-     
-     <div class="interactive-controls">
-       <label for="factor-select">Select factor to explore:</label>
-       <select id="factor-select">
-         <option value="sleep">Sleep Duration</option>
-         <option value="social-media">Social Media Usage</option>
-         <option value="academic">Academic Pressure</option>
-         <option value="family">Family History</option>
-       </select>
-       <button type="button">Update</button>
-     </div>
-     
-     <div class="visualization-container" id="factors-chart-container">
-       <p>Interactive Factors Visualization Will Appear Here</p>
-     </div>
-     
+     <div class="visualization-container" id="map-container" style="height: 600px; padding: 0;">
+     <iframe src="../depression_visualization.html"
+              width="100%"
+              height="100%"
+              style="border: none; border-radius: 8px; display: block; margin: auto;"></iframe>
+            </div>
+    We welcome the reader to try out the interactive visualization above. It allows you to explore how different factors relate to mental health outcomes.
+    Examining different factors can help understand the complex interplay between lifestyle choices, academic pressures, and mental health.
+    Using the above visualization, we can clearly see how putting too much workload into a day to day life can lead to a higher chance of depression. With each hour of work added the chance of depression increases by roughly 5% until a 9 hour mark where the rate stabilizes at a high level.
+    We can also see an interesing situation where students who report no academic pressure have a higher chance of deppresion then the ones with a low level of academic pressure. 
+    <div class="visualization-description">
+      <h3>Correlation</h3>
+      <p>
+        Although by exploring the data in the interactive visualization above we can see the depression trends per each category, one of the most interesting things to know is which of the factors are most strongly correlated with deprresion.
+        To explore this, we tested the correlation between each of the factors and the depression rate using the Cramer's V and point-biserial correlation based on the feature type. The results are shown in the chart below.
+      </p>
+      <img src="../plots/correlation_strength.png" alt="Gender distribution" style="width: 300px; height: auto; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <p style>
+        The chart show that by far the most correlated factor with depression is the <strong>academic pressure</strong>, followed by <strong>financial stress</strong>.
+    </div>
      <div class="visualization-description">
        <h3>Factors Analysis</h3>
        <p>
-         Our analysis reveals strong correlations between certain lifestyle factors and depression rates. Students who report sleeping less than 5 hours per night show significantly higher rates of depression compared to those who get 7-8 hours of sleep. Similarly, excessive social media usage correlates with increased depression prevalence. The interactive visualization above allows you to explore how different factors relate to mental health outcomes.
+         Whilst the financial and academic stress are the most correlated with depression, we can see that the <strong>sleep</strong> and <strong>Dietary habits</strong> are also very important factors that contribute to depression. 
        </p>
      </div>
    </section>
