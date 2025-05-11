@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_4b12b01fffc50b594ecdc488a037ba61 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_4b12b01fffc50b594ecdc488a037ba61" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_4b12b01fffc50b594ecdc488a037ba61 = L.map(
+                "map_4b12b01fffc50b594ecdc488a037ba61",
+                {
+                    center: [22.5, 78.9],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 5,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_2808ef40dfcae8f5555424d506fcf19d = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_2808ef40dfcae8f5555424d506fcf19d.addTo(map_4b12b01fffc50b594ecdc488a037ba61);
+        
+    
+            var circle_marker_99074f2c236ba0477e39a1abb6a677d4 = L.circleMarker(
+                [27.187935, 78.003944],
+                {"bubblingMouseEvents": true, "color": "crimson", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "crimson", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.694698354661792, "stroke": true, "weight": 3}
+            ).addTo(map_4b12b01fffc50b594ecdc488a037ba61);
+        
+    
+        var popup_780b4a28ccb8ac50e5c79c8ff8324ff2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_31118c78ecfce71c6cda3784a5059ab0 = $(`<div id="html_31118c78ecfce71c6cda3784a5059ab0" style="width: 100.0%; height: 100.0%;"><b>Agra</b><br>Depression Rate: 53.5%<br>Total Students: 1094</div>`)[0];
+                popup_780b4a28ccb8ac50e5c79c8ff8324ff2.setContent(html_31118c78ecfce71c6cda3784a5059ab0);
+            
+        
+
+        circle_marker_99074f2c236ba0477e39a1abb6a677d4.bindPopup(popup_780b4a28ccb8ac50e5c79c8ff8324ff2)
+        ;
+
+        
+    
+    
+            var circle_marker_b51cad729bbb1caed52cab045de67878 = L.circleMarker(
+                [23.025793, 72.587265],
+                {"bubblingMouseEvents": true, "color": "crimson", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "crimson", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.45951629863302, "stroke": true, "weight": 3}
+            ).addTo(map_4b12b01fffc50b594ecdc488a037ba61);
+        
+    
+        var popup_d0b310d90e819eb0170d3c08d81ee5b5 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_50db057c20e55d99f57d82a104dbbd03 = $(`<div id="html_50db057c20e55d99f57d82a104dbbd03" style="width: 100.0%; height: 100.0%;"><b>Ahmedabad</b><br>Depression Rate: 67.3%<br>Total Students: 951</div>`)[0];
+                popup_d0b310d90e819eb0170d3c08d81ee5b5.setContent(html_50db057c20e55d99f57d82a104dbbd03);
+            
+        
+
+        circle_marker_b51cad729bbb1caed52cab045de67878.bindPopup(popup_d0b310d90e819eb0170d3c08d81ee5b5)
+        ;
+
+        
+    
+    
+            var circle_marker_f493b040467de0915aae7803fa2032c0 = L.circleMarker(
+                [13.084622, 80.248357],
+                {"bubblingMouseEvents": true, "color": "crimson", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "crimson", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.93220338983051, "stroke": true, "weight": 3}
+            ).addTo(map_4b12b01fffc50b594ecdc488a037ba61);
+        
+    
+        var popup_131f6d4865660a8b1133b359e54d84dc = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_342630192a3c0569fe5376c0e25d0ff7 = $(`<div id="html_342630192a3c0569fe5376c0e25d0ff7" style="width: 100.0%; height: 100.0%;"><b>Chennai</b><br>Depression Rate: 59.7%<br>Total Students: 885</div>`)[0];
+                popup_131f6d4865660a8b1133b359e54d84dc.setContent(html_342630192a3c0569fe5376c0e25d0ff7);
+            
+        
+
+        circle_marker_f493b040467de0915aae7803fa2032c0.bindPopup(popup_131f6d4865660a8b1133b359e54d84dc)
+        ;
+
+        
+    
+    
+            var circle_marker_e644411f8b378ba77e752c2d322b6913 = L.circleMarker(
+                [28.651952, 77.231495],
+                {"bubblingMouseEvents": true, "color": "crimson", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "crimson", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.1875, "stroke": true, "weight": 3}
+            ).addTo(map_4b12b01fffc50b594ecdc488a037ba61);
+        
+    
+        var popup_6fee12c1a9faaa4b867e72d2976e0053 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e885ff104fe47d8f614d5a26101a39fe = $(`<div id="html_e885ff104fe47d8f614d5a26101a39fe" style="width: 100.0%; height: 100.0%;"><b>Delhi</b><br>Depression Rate: 60.9%<br>Total Students: 768</div>`)[0];
+                popup_6fee12c1a9faaa4b867e72d2976e0053.setContent(html_e885ff104fe47d8f614d5a26101a39fe);
+            
+        
+
+        circle_marker_e644411f8b378ba77e752c2d322b6913.bindPopup(popup_6fee12c1a9faaa4b867e72d2976e0053)
+        ;
+
+        
+    
+    
+            var circle_marker_8a03c7e0b5d65e6749637eae801eeb4c = L.circleMarker(
+                [28.411236, 77.313162],
+                {"bubblingMouseEvents": true, "color": "crimson", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "crimson", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.75704989154013, "stroke": true, "weight": 3}
+            ).addTo(map_4b12b01fffc50b594ecdc488a037ba61);
+        
+    
+        var popup_5673d1c754ba840bd9beb97309bfc0ac = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_867a4507d9d7167b238c229fd4e86a96 = $(`<div id="html_867a4507d9d7167b238c229fd4e86a96" style="width: 100.0%; height: 100.0%;"><b>Faridabad</b><br>Depression Rate: 58.8%<br>Total Students: 461</div>`)[0];
+                popup_5673d1c754ba840bd9beb97309bfc0ac.setContent(html_867a4507d9d7167b238c229fd4e86a96);
+            
+        
+
+        circle_marker_8a03c7e0b5d65e6749637eae801eeb4c.bindPopup(popup_5673d1c754ba840bd9beb97309bfc0ac)
+        ;
+
+        
+    
+    
+            var circle_marker_16eca5cdc741976cd03db3793d1a4b75 = L.circleMarker(
+                [28.665353, 77.439148],
+                {"bubblingMouseEvents": true, "color": "crimson", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "crimson", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.48993288590604, "stroke": true, "weight": 3}
+            ).addTo(map_4b12b01fffc50b594ecdc488a037ba61);
+        
+    
+        var popup_18419a9424df2e00029cbdf71b49aaa6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_756cc03d169f39070100e58a3a45ee3e = $(`<div id="html_756cc03d169f39070100e58a3a45ee3e" style="width: 100.0%; height: 100.0%;"><b>Ghaziabad</b><br>Depression Rate: 57.4%<br>Total Students: 745</div>`)[0];
+                popup_18419a9424df2e00029cbdf71b49aaa6.setContent(html_756cc03d169f39070100e58a3a45ee3e);
+            
+        
+
+        circle_marker_16eca5cdc741976cd03db3793d1a4b75.bindPopup(popup_18419a9424df2e00029cbdf71b49aaa6)
+        ;
+
+        
+    
+    
+            var circle_marker_bc0042a44ce2ca943404e5b71b8c67b8 = L.circleMarker(
+                [17.384052, 78.456355],
+                {"bubblingMouseEvents": true, "color": "crimson", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "crimson", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.388059701492537, "stroke": true, "weight": 3}
+            ).addTo(map_4b12b01fffc50b594ecdc488a037ba61);
+        
+    
+        var popup_6673163d3e54db311e797daedd820d8c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_dbb1179cb1b6953bd4db46899ba08ad2 = $(`<div id="html_dbb1179cb1b6953bd4db46899ba08ad2" style="width: 100.0%; height: 100.0%;"><b>Hyderabad</b><br>Depression Rate: 66.9%<br>Total Students: 1340</div>`)[0];
+                popup_6673163d3e54db311e797daedd820d8c.setContent(html_dbb1179cb1b6953bd4db46899ba08ad2);
+            
+        
+
+        circle_marker_bc0042a44ce2ca943404e5b71b8c67b8.bindPopup(popup_6673163d3e54db311e797daedd820d8c)
+        ;
+
+        
+    
+    
+            var circle_marker_ab6d98616f6cae7b15428b0a259c5835 = L.circleMarker(
+                [22.717736, 75.85859],
+                {"bubblingMouseEvents": true, "color": "crimson", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "crimson", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.099533437013996, "stroke": true, "weight": 3}
+            ).addTo(map_4b12b01fffc50b594ecdc488a037ba61);
+        
+    
+        var popup_9c8f480b592401e559a4e70c816e1211 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ebe83c7a84f585c803f1d2f066f58b21 = $(`<div id="html_ebe83c7a84f585c803f1d2f066f58b21" style="width: 100.0%; height: 100.0%;"><b>Indore</b><br>Depression Rate: 60.5%<br>Total Students: 643</div>`)[0];
+                popup_9c8f480b592401e559a4e70c816e1211.setContent(html_ebe83c7a84f585c803f1d2f066f58b21);
+            
+        
+
+        circle_marker_ab6d98616f6cae7b15428b0a259c5835.bindPopup(popup_9c8f480b592401e559a4e70c816e1211)
+        ;
+
+        
+    
+    
+            var circle_marker_6f9e2a95cfd995d7280e720a868197da = L.circleMarker(
+                [26.913312, 75.787872],
+                {"bubblingMouseEvents": true, "color": "crimson", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "crimson", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.482625482625483, "stroke": true, "weight": 3}
+            ).addTo(map_4b12b01fffc50b594ecdc488a037ba61);
+        
+    
+        var popup_e9dee2d3512d3afb2d04afc8ff1b7a5b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ec543be62c109bab9e4b1c5ceaa41df9 = $(`<div id="html_ec543be62c109bab9e4b1c5ceaa41df9" style="width: 100.0%; height: 100.0%;"><b>Jaipur</b><br>Depression Rate: 52.4%<br>Total Students: 1036</div>`)[0];
+                popup_e9dee2d3512d3afb2d04afc8ff1b7a5b.setContent(html_ec543be62c109bab9e4b1c5ceaa41df9);
+            
+        
+
+        circle_marker_6f9e2a95cfd995d7280e720a868197da.bindPopup(popup_e9dee2d3512d3afb2d04afc8ff1b7a5b)
+        ;
+
+        
+    
+    
+            var circle_marker_a61f527cd17de9274cfcbf274e4c5224 = L.circleMarker(
+                [19.243703, 73.135537],
+                {"bubblingMouseEvents": true, "color": "crimson", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "crimson", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.898089171974522, "stroke": true, "weight": 3}
+            ).addTo(map_4b12b01fffc50b594ecdc488a037ba61);
+        
+    
+        var popup_223dd894bbafe4a6f98e08e240b04770 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_bdebe524ca5bff527dfa1bf2400d8004 = $(`<div id="html_bdebe524ca5bff527dfa1bf2400d8004" style="width: 100.0%; height: 100.0%;"><b>Kalyan</b><br>Depression Rate: 59.5%<br>Total Students: 1570</div>`)[0];
+                popup_223dd894bbafe4a6f98e08e240b04770.setContent(html_bdebe524ca5bff527dfa1bf2400d8004);
+            
+        
+
+        circle_marker_a61f527cd17de9274cfcbf274e4c5224.bindPopup(popup_223dd894bbafe4a6f98e08e240b04770)
+        ;
+
+        
+    
+    
+            var circle_marker_30b2b34acdb58c05cb4593641d28c25d = L.circleMarker(
+                [26.839281, 80.923133],
+                {"bubblingMouseEvents": true, "color": "crimson", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "crimson", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.0995670995671, "stroke": true, "weight": 3}
+            ).addTo(map_4b12b01fffc50b594ecdc488a037ba61);
+        
+    
+        var popup_d19929393582d91f5fa4be9479e982f3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_919a0e3ba89fba1dc8a10d108d6c010b = $(`<div id="html_919a0e3ba89fba1dc8a10d108d6c010b" style="width: 100.0%; height: 100.0%;"><b>Lucknow</b><br>Depression Rate: 55.5%<br>Total Students: 1155</div>`)[0];
+                popup_d19929393582d91f5fa4be9479e982f3.setContent(html_919a0e3ba89fba1dc8a10d108d6c010b);
+            
+        
+
+        circle_marker_30b2b34acdb58c05cb4593641d28c25d.bindPopup(popup_d19929393582d91f5fa4be9479e982f3)
+        ;
+
+        
+    
+    
+            var circle_marker_3832fcde1ffb97cfdb740a5daa91e23e = L.circleMarker(
+                [30.912042, 75.853789],
+                {"bubblingMouseEvents": true, "color": "crimson", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "crimson", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.647164716471647, "stroke": true, "weight": 3}
+            ).addTo(map_4b12b01fffc50b594ecdc488a037ba61);
+        
+    
+        var popup_3d31c55bb0e781359e038471b68dcb4a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4ad64df455d00774301fecf7e3f17571 = $(`<div id="html_4ad64df455d00774301fecf7e3f17571" style="width: 100.0%; height: 100.0%;"><b>Ludhiana</b><br>Depression Rate: 58.2%<br>Total Students: 1111</div>`)[0];
+                popup_3d31c55bb0e781359e038471b68dcb4a.setContent(html_4ad64df455d00774301fecf7e3f17571);
+            
+        
+
+        circle_marker_3832fcde1ffb97cfdb740a5daa91e23e.bindPopup(popup_3d31c55bb0e781359e038471b68dcb4a)
+        ;
+
+        
+    
+    
+            var circle_marker_2cf5c95fd320489f4752e570e713169f = L.circleMarker(
+                [28.980018, 77.706356],
+                {"bubblingMouseEvents": true, "color": "crimson", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "crimson", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.951515151515153, "stroke": true, "weight": 3}
+            ).addTo(map_4b12b01fffc50b594ecdc488a037ba61);
+        
+    
+        var popup_e3b63821336880e808743d9a25de172d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_077190d8455bbe2b61458fb586547002 = $(`<div id="html_077190d8455bbe2b61458fb586547002" style="width: 100.0%; height: 100.0%;"><b>Meerut</b><br>Depression Rate: 59.8%<br>Total Students: 825</div>`)[0];
+                popup_e3b63821336880e808743d9a25de172d.setContent(html_077190d8455bbe2b61458fb586547002);
+            
+        
+
+        circle_marker_2cf5c95fd320489f4752e570e713169f.bindPopup(popup_e3b63821336880e808743d9a25de172d)
+        ;
+
+        
+    
+    
+            var circle_marker_626d406d966a28511995c0304710ef71 = L.circleMarker(
+                [18.987807, 72.836447],
+                {"bubblingMouseEvents": true, "color": "crimson", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "crimson", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.044349070100143, "stroke": true, "weight": 3}
+            ).addTo(map_4b12b01fffc50b594ecdc488a037ba61);
+        
+    
+        var popup_8e441d6c216f097b2a0f47dee7ef3ad8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d73095209a0331509ff0f7d62a130de8 = $(`<div id="html_d73095209a0331509ff0f7d62a130de8" style="width: 100.0%; height: 100.0%;"><b>Mumbai</b><br>Depression Rate: 55.2%<br>Total Students: 699</div>`)[0];
+                popup_8e441d6c216f097b2a0f47dee7ef3ad8.setContent(html_d73095209a0331509ff0f7d62a130de8);
+            
+        
+
+        circle_marker_626d406d966a28511995c0304710ef71.bindPopup(popup_8e441d6c216f097b2a0f47dee7ef3ad8)
+        ;
+
+        
+    
+    
+            var circle_marker_12fe691ce10db8fe8f6537f362945deb = L.circleMarker(
+                [25.615379, 85.101027],
+                {"bubblingMouseEvents": true, "color": "crimson", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "crimson", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.63157894736842, "stroke": true, "weight": 3}
+            ).addTo(map_4b12b01fffc50b594ecdc488a037ba61);
+        
+    
+        var popup_8193e2e9d8d2c227c46568ef24a0e01e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5a2b61239bcb1d40f0bfa27c8576a6d8 = $(`<div id="html_5a2b61239bcb1d40f0bfa27c8576a6d8" style="width: 100.0%; height: 100.0%;"><b>Patna</b><br>Depression Rate: 63.2%<br>Total Students: 1007</div>`)[0];
+                popup_8193e2e9d8d2c227c46568ef24a0e01e.setContent(html_5a2b61239bcb1d40f0bfa27c8576a6d8);
+            
+        
+
+        circle_marker_12fe691ce10db8fe8f6537f362945deb.bindPopup(popup_8193e2e9d8d2c227c46568ef24a0e01e)
+        ;
+
+        
+    
+    
+            var circle_marker_af2979574be7834cdf642ff5e370da26 = L.circleMarker(
+                [18.513271, 73.849852],
+                {"bubblingMouseEvents": true, "color": "crimson", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "crimson", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.177685950413224, "stroke": true, "weight": 3}
+            ).addTo(map_4b12b01fffc50b594ecdc488a037ba61);
+        
+    
+        var popup_f7eb3f5e963e2ededc895759d765e372 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2410501909ef078aad72f4c767ac2c72 = $(`<div id="html_2410501909ef078aad72f4c767ac2c72" style="width: 100.0%; height: 100.0%;"><b>Pune</b><br>Depression Rate: 55.9%<br>Total Students: 968</div>`)[0];
+                popup_f7eb3f5e963e2ededc895759d765e372.setContent(html_2410501909ef078aad72f4c767ac2c72);
+            
+        
+
+        circle_marker_af2979574be7834cdf642ff5e370da26.bindPopup(popup_f7eb3f5e963e2ededc895759d765e372)
+        ;
+
+        
+    
+    
+            var circle_marker_6084a62838f135e03e68ea6cf32cba4f = L.circleMarker(
+                [22.291606, 70.793217],
+                {"bubblingMouseEvents": true, "color": "crimson", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "crimson", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.524509803921568, "stroke": true, "weight": 3}
+            ).addTo(map_4b12b01fffc50b594ecdc488a037ba61);
+        
+    
+        var popup_5e08b1c5d637581c8d3267eebfcbdd52 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8e7164f12b4296c2c0c7bae0cc20e03e = $(`<div id="html_8e7164f12b4296c2c0c7bae0cc20e03e" style="width: 100.0%; height: 100.0%;"><b>Rajkot</b><br>Depression Rate: 62.6%<br>Total Students: 816</div>`)[0];
+                popup_5e08b1c5d637581c8d3267eebfcbdd52.setContent(html_8e7164f12b4296c2c0c7bae0cc20e03e);
+            
+        
+
+        circle_marker_6084a62838f135e03e68ea6cf32cba4f.bindPopup(popup_5e08b1c5d637581c8d3267eebfcbdd52)
+        ;
+
+        
+    
+    
+            var circle_marker_59b0265c5c8e109b69c5f3f654fa7a87 = L.circleMarker(
+                [34.085652, 74.805553],
+                {"bubblingMouseEvents": true, "color": "crimson", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "crimson", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.122448979591837, "stroke": true, "weight": 3}
+            ).addTo(map_4b12b01fffc50b594ecdc488a037ba61);
+        
+    
+        var popup_81eac18c63053e8b0ed8202f5122a92b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d72ca458fdcefb25a24d0ea825de0f02 = $(`<div id="html_d72ca458fdcefb25a24d0ea825de0f02" style="width: 100.0%; height: 100.0%;"><b>Srinagar</b><br>Depression Rate: 55.6%<br>Total Students: 1372</div>`)[0];
+                popup_81eac18c63053e8b0ed8202f5122a92b.setContent(html_d72ca458fdcefb25a24d0ea825de0f02);
+            
+        
+
+        circle_marker_59b0265c5c8e109b69c5f3f654fa7a87.bindPopup(popup_81eac18c63053e8b0ed8202f5122a92b)
+        ;
+
+        
+    
+    
+            var circle_marker_587ca5b38d8d1f0ff8f822f83be4ce05 = L.circleMarker(
+                [21.195944, 72.830232],
+                {"bubblingMouseEvents": true, "color": "crimson", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "crimson", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.595547309833023, "stroke": true, "weight": 3}
+            ).addTo(map_4b12b01fffc50b594ecdc488a037ba61);
+        
+    
+        var popup_16c8388a339fea9adfb894aab8f131fa = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f9d81f1f25d5d0674b85a2f1552e0d8b = $(`<div id="html_f9d81f1f25d5d0674b85a2f1552e0d8b" style="width: 100.0%; height: 100.0%;"><b>Surat</b><br>Depression Rate: 58.0%<br>Total Students: 1078</div>`)[0];
+                popup_16c8388a339fea9adfb894aab8f131fa.setContent(html_f9d81f1f25d5d0674b85a2f1552e0d8b);
+            
+        
+
+        circle_marker_587ca5b38d8d1f0ff8f822f83be4ce05.bindPopup(popup_16c8388a339fea9adfb894aab8f131fa)
+        ;
+
+        
+    
+    
+            var circle_marker_fea0871a53cef35a31496655ed2321e2 = L.circleMarker(
+                [22.299405, 73.208119],
+                {"bubblingMouseEvents": true, "color": "crimson", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "crimson", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.239193083573486, "stroke": true, "weight": 3}
+            ).addTo(map_4b12b01fffc50b594ecdc488a037ba61);
+        
+    
+        var popup_6670cdea9c9f86a48a9c400d4d351028 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_aa95dd4bb3fe6cce61c03081ed82c059 = $(`<div id="html_aa95dd4bb3fe6cce61c03081ed82c059" style="width: 100.0%; height: 100.0%;"><b>Vadodara</b><br>Depression Rate: 56.2%<br>Total Students: 694</div>`)[0];
+                popup_6670cdea9c9f86a48a9c400d4d351028.setContent(html_aa95dd4bb3fe6cce61c03081ed82c059);
+            
+        
+
+        circle_marker_fea0871a53cef35a31496655ed2321e2.bindPopup(popup_6670cdea9c9f86a48a9c400d4d351028)
+        ;
+
+        
+    
+    
+            var circle_marker_40c1e437a6d46b592c27513c619c1c75 = L.circleMarker(
+                [25.31774, 83.005811],
+                {"bubblingMouseEvents": true, "color": "crimson", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "crimson", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.627737226277372, "stroke": true, "weight": 3}
+            ).addTo(map_4b12b01fffc50b594ecdc488a037ba61);
+        
+    
+        var popup_b3820da0462f587518d6067db0352821 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_628429230eb138cb05b66e198ea27346 = $(`<div id="html_628429230eb138cb05b66e198ea27346" style="width: 100.0%; height: 100.0%;"><b>Varanasi</b><br>Depression Rate: 53.1%<br>Total Students: 685</div>`)[0];
+                popup_b3820da0462f587518d6067db0352821.setContent(html_628429230eb138cb05b66e198ea27346);
+            
+        
+
+        circle_marker_40c1e437a6d46b592c27513c619c1c75.bindPopup(popup_b3820da0462f587518d6067db0352821)
+        ;
+
+        
+    
+</script>
+</html>
