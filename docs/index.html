@@ -1,695 +1,956 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Behind the Grades: Mental Health Trends in Indian Students</title>
- <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
- <script src="https://d3js.org/d3.v7.min.js"></script>
- <style>
-   :root {
-     --primary-color: #3A5E8C;
-     --secondary-color: #90CCF4;
-     --accent-color: #F08C8C;
-     --background-color: #FFFFFF;
-     --text-color: #333333;
-     --section-bg: #F8F9FA;
-     --highlight: #E9F2FB;
-   }
-   
-   * {
-     margin: 0;
-     padding: 0;
-     box-sizing: border-box;
-   }
-   
-   body {
-     font-family: 'Source Sans Pro', sans-serif;
-     line-height: 1.6;
-     color: var(--text-color);
-     background-color: var(--background-color);
-   }
-   
-   .container {
-     max-width: 1200px;
-     margin: 0 auto;
-     padding: 0 20px;
-   }
-   
-   /* Header */
-   header {
-     background-color: var(--primary-color);
-     color: white;
-     padding: 60px 0 40px;
-   }
-   
-   .site-title {
-     font-family: 'Playfair Display', serif;
-     font-size: 3rem;
-     font-weight: 700;
-     margin-bottom: 10px;
-     letter-spacing: -0.5px;
-   }
-   
-   .site-subtitle {
-     font-family: 'Playfair Display', serif;
-     font-size: 1.5rem;
-     font-weight: 400;
-     font-style: italic;
-     opacity: 0.9;
-     max-width: 800px;
-   }
-   
-   /* Navigation */
-   nav {
-     background-color: white;
-     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-     position: sticky;
-     top: 0;
-     z-index: 100;
-   }
-   
-   .nav-container {
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-     padding: 15px 0;
-   }
-   
-   .logo {
-     font-family: 'Playfair Display', serif;
-     font-weight: 700;
-     color: var(--primary-color);
-     font-size: 1.3rem;
-     text-decoration: none;
-   }
-   
-   .nav-links {
-     display: flex;
-     list-style: none;
-   }
-   
-   .nav-links li {
-     margin-left: 30px;
-   }
-   
-   .nav-links a {
-     color: var(--text-color);
-     text-decoration: none;
-     font-weight: 600;
-     font-size: 0.95rem;
-     transition: color 0.3s;
-   }
-   
-   .nav-links a:hover {
-     color: var(--primary-color);
-   }
-   
-   /* Main content */
-   main {
-     padding: 50px 0;
-   }
-   
-   section {
-     margin-bottom: 70px;
-   }
-   
-   .intro-section {
-     margin-bottom: 50px;
-   }
-   
-   h2 {
-     font-family: 'Playfair Display', serif;
-     font-size: 2.2rem;
-     color: var(--primary-color);
-     margin-bottom: 20px;
-     position: relative;
-   }
-   
-   h2::after {
-     content: '';
-     position: absolute;
-     bottom: -10px;
-     left: 0;
-     width: 60px;
-     height: 3px;
-     background-color: var(--accent-color);
-   }
-   
-   h3 {
-     font-family: 'Playfair Display', serif;
-     font-size: 1.5rem;
-     margin: 30px 0 15px;
-     color: var(--primary-color);
-   }
-   
-   p {
-     margin-bottom: 20px;
-     font-size: 1.05rem;
-     line-height: 1.7;
-   }
-   
-   .highlight-box {
-     background-color: var(--highlight);
-     border-left: 4px solid var(--accent-color);
-     padding: 20px 25px;
-     margin: 30px 0;
-     border-radius: 0 4px 4px 0;
-   }
-   
-   .highlight-box p:last-child {
-     margin-bottom: 0;
-   }
-   
-   /* Visualization containers */
-   .visualization-section {
-     background-color: var(--section-bg);
-     border-radius: 8px;
-     padding: 40px;
-     margin: 40px 0;
-   }
-   
-   .visualization-container {
-     width: 100%;
-     height: 400px;
-     margin: 30px 0;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     border: 1px dashed #ccc;
-     background-color: white;
-     border-radius: 4px;
-   }
-   
-   .visualization-container p {
-     color: #888;
-     font-style: italic;
-   }
-   
-   .visualization-description {
-     margin-top: 20px;
-   }
-   
-   /* Interactive controls */
-   .interactive-controls {
-     background-color: white;
-     padding: 20px;
-     border-radius: 8px;
-     margin-bottom: 20px;
-     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-   }
-   
-   .interactive-controls select, 
-   .interactive-controls button {
-     padding: 8px 15px;
-     border: 1px solid #ddd;
-     border-radius: 4px;
-     margin-right: 10px;
-     font-family: inherit;
-   }
-   
-   .interactive-controls button {
-     background-color: var(--primary-color);
-     color: white;
-     border: none;
-     cursor: pointer;
-     transition: background-color 0.3s;
-   }
-   
-   .interactive-controls button:hover {
-     background-color: #2d4a70;
-   }
-   
-   /* Stats grid */
-   .stats-grid {
-     display: grid;
-     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-     gap: 20px;
-     margin: 30px 0;
-   }
-   
-   .stat-card {
-     background-color: white;
-     border-radius: 8px;
-     padding: 25px;
-     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-     text-align: center;
-   }
-   
-   .stat-number {
-     font-size: 2.5rem;
-     font-weight: 600;
-     color: var(--primary-color);
-     margin: 10px 0;
-   }
-   
-   .stat-label {
-     font-size: 1rem;
-     color: #666;
-     margin-bottom: 0;
-   }
-   
-   /* Footer */
-   footer {
-     background-color: var(--primary-color);
-     color: white;
-     padding: 50px 0 20px;
-     margin-top: 50px;
-   }
-   
-   .footer-grid {
-     display: grid;
-     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-     gap: 40px;
-     margin-bottom: 40px;
-   }
-   
-   .footer-column h3 {
-     color: white;
-     font-size: 1.2rem;
-     margin-top: 0;
-     margin-bottom: 20px;
-     font-family: 'Source Sans Pro', sans-serif;
-     font-weight: 600;
-   }
-   
-   .footer-column p, 
-   .footer-column a {
-     color: rgba(255,255,255,0.8);
-     margin-bottom: 10px;
-     display: block;
-     text-decoration: none;
-   }
-   
-   .footer-column a:hover {
-     color: white;
-   }
-   
-   .footer-bottom {
-     text-align: center;
-     padding-top: 20px;
-     border-top: 1px solid rgba(255,255,255,0.1);
-     font-size: 0.9rem;
-     color: rgba(255,255,255,0.6);
-   }
-   
-   /* Responsive adjustments */
-   @media (max-width: 768px) {
-     .site-title {
-       font-size: 2.5rem;
-     }
-     
-     .site-subtitle {
-       font-size: 1.2rem;
-     }
-     
-     .nav-container {
-       flex-direction: column;
-       padding: 15px 0;
-     }
-     
-     .nav-links {
-       margin-top: 15px;
-     }
-     
-     .nav-links li {
-       margin-left: 15px;
-       margin-right: 15px;
-     }
-     
-     .visualization-section {
-       padding: 25px;
-     }
-   }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Behind the Grades: Mental Health Trends in Indian Students</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+      :root {
+        --primary-color: #3a5e8c;
+        --secondary-color: #90ccf4;
+        --accent-color: #f08c8c;
+        --background-color: #ffffff;
+        --text-color: #333333;
+        --section-bg: #f8f9fa;
+        --highlight: #e9f2fb;
+      }
 
-   img.chart {
-    max-width: 100%;
-    height: auto;
-    border-radius: 6px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-   }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-   figcaption {
-     font-style: italic;
-     text-align: center;
-     color: #555;
-     font-size: 0.95rem;
-   }
+      body {
+        font-family: "Source Sans Pro", sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--background-color);
+      }
 
-   .article-quote {
-     font-family: 'Playfair Display', serif;
-     font-size: 1.4rem;
-     line-height: 1.6;
-     font-style: italic;
-     color: var(--primary-color);
-     border-left: 4px solid var(--accent-color);
-     padding-left: 20px;
-     margin: 35px 0;
-   }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
 
-   .article-highlight {
-     background-color: #f8f9fa;
-     padding: 25px;
-     margin: 30px 0;
-     border-radius: 6px;
-     border-left: 4px solid var(--primary-color);
-   }
+      /* Header */
+      header {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 60px 0 40px;
+      }
 
-   .key-statistic {
-     font-size: 1.2rem;
-     font-weight: 600;
-     color: var(--primary-color);
-   }
+      .site-title {
+        font-family: "Playfair Display", serif;
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        letter-spacing: -0.5px;
+      }
 
-   .risk-assessment-chart {
-     max-width: 700px;
-     margin: 30px auto;
-     display: block;
-   }
+      .site-subtitle {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        font-weight: 400;
+        font-style: italic;
+        opacity: 0.9;
+        max-width: 800px;
+      }
 
- </style>
-</head>
-<body>
- <header>
-   <div class="container">
-     <h1 class="site-title">Behind the Grades: Mental Health Trends in Indian Students</h1>
-     <p class="site-subtitle">Exploring the connection between academic life and mental wellbeing</p>
-   </div>
- </header>
- 
- <nav>
-   <div class="container nav-container">
-     <a href="#" class="logo">Student Mental Health</a>
-     <ul class="nav-links">
-       <li><a href="#introduction">Overview</a></li>
-       <li><a href="#prevalence">Results</a></li>
-       <li><a href="#factors">Key Factors</a></li>
-       <li><a href="#geography">Regional Patterns</a></li>
-       <li><a href="#recommendations">Recommendations</a></li>
-     </ul>
-   </div>
- </nav>
- 
- <main class="container">
-   <section id="introduction" class="intro-section">
-     <h2>Understanding Student Mental Health</h2>
-     
-     <p>
-       Across India, many university students balance their studies with family expectations and personal goals. While this dedication often leads to academic success, our research shows it may also impact mental wellbeing.
-     </p>
-     
-     <p>
-       In India's educational environment, students work hard to achieve good grades. However, their mental health needs often receive less attention. Our project examines data from nearly 28,000 university students across India to better understand this issue and identify what factors might contribute to student depression.
-     </p>
-     
-     <div class="article-quote">
-       "Academic success is important, but student wellbeing matters too."
-     </div>
-     
-     <p>
-       We chose this topic because student mental health is an important issue that needs more attention. Our data shows that more than 60% of students reported symptoms of depression. As students ourselves, we understand these challenges and wanted to create visualizations that help explain the different factors affecting mental health in educational settings.
-     </p>
-     
-     <div class="stats-grid">
-       <div class="stat-card">
-         <p class="stat-label">Students Surveyed</p>
-         <div class="stat-number">27,901</div>
-         <p>University students across India</p>
-       </div>
-       <div class="stat-card">
-         <p class="stat-label">Depression Prevalence</p>
-         <div class="stat-number">60%+</div>
-         <p>Students reporting depression symptoms</p>
-       </div>
-       <div class="stat-card">
-         <p class="stat-label">Data features</p>
-         <div class="stat-number">17</div>
-         <p>Factors analyzed per student</p>
-       </div>
-     </div>
-     
-     <div class="highlight-box">
-       <h3>About This Project</h3>
-       <p>
-         Our analysis uses the <a href="https://www.kaggle.com/datasets/adilshamim8/student-depression-dataset">Student Depression Dataset</a> from Kaggle. This dataset includes information about students' mental health, academic performance (CGPA), lifestyle habits (sleep patterns, social media usage), demographics (age, gender), and other mental health indicators (suicidal thoughts, family history of mental illness). Through our visualizations, we aim to show the human story behind the statistics and help identify warning signs of depression among students.
-       </p>
-     </div>
-   </section>
+      /* Navigation */
+      nav {
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
 
-   <section id="dataset" class="visualization-section">
-    <h3>Understanding Our Data</h3>
-  
-    <p>
-      Before creating visualizations, we wanted to understand what our dataset really represents. Each row in our data shows one student's life - their sleep habits, stress levels, and mental health. Each number tells part of a story about nearly 28,000 university students across India. Like most real-world data, these needed to be prepared carefully.
-    </p>
-  
-    <p>
-      The dataset had no missing values, which is unusual and helpful. However, many columns had long labels and text responses instead of numbers. To make the data easier to analyze while keeping its meaning intact, we made several improvements.
-    </p>
-  
-    <div class="article-highlight">
-      <h4>How We Prepared the Data</h4>
-      <ul style="padding-left: 20px; margin-bottom: 20px;">
-        <li><strong>Making column names simpler:</strong> We changed long names like <em>"Have you ever had suicidal thoughts?"</em> to shorter ones like <code>Suicidal_Thoughts</code>.</li>
-        <li><strong>Converting text to numbers:</strong> Yes/No answers became 1 for "Yes" and 0 for "No." We did this for columns like <code>Suicidal_Thoughts</code> and <code>Family_History</code>.</li>
-        <li><strong>Creating numerical scales:</strong> For categories like <code>Financial_Stress</code>, we used numbers (Low = 1, Medium = 2, High = 3) to make comparisons easier.</li>
-        <li><strong>Standardizing time measurements:</strong> Sleep descriptions like "5–6 hours" became numeric values (5 hours) for consistency.</li>
-        <li><strong>Creating separate columns for categories:</strong> Variables like <code>Gender</code> and <code>Profession</code> were split into multiple yes/no columns for better analysis.</li>
-      </ul>
-    </div>
-  
-    <p>
-      These changes made the dataset much easier to work with, allowing us to better explore how different aspects of student life relate to mental health.
-    </p>
-  
-    <div style="display: flex; flex-direction: column; gap: 40px; margin-top: 40px;">
-  
-      <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
-        <img src="plots/gender_distribution.png" alt="Gender distribution" style="width: 300px; height: auto; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-        <div>
-          <h4 style="margin-bottom: 10px; color: #3A5E8C;">Gender Distribution</h4>
-          <p style="max-width: 600px;">
-            This chart shows we have similar numbers of male and female students in our dataset. This balance makes our gender comparisons more reliable throughout the analysis.
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+      }
+
+      .logo {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        color: var(--primary-color);
+        font-size: 1.3rem;
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 30px;
+      }
+
+      .nav-links a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-color);
+      }
+
+      /* Main content */
+      main {
+        padding: 50px 0;
+      }
+
+      section {
+        margin-bottom: 70px;
+      }
+
+      .intro-section {
+        margin-bottom: 50px;
+      }
+
+      h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.2rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background-color: var(--accent-color);
+      }
+
+      h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        margin: 30px 0 15px;
+        color: var(--primary-color);
+      }
+
+      p {
+        margin-bottom: 20px;
+        font-size: 1.05rem;
+        line-height: 1.7;
+      }
+
+      .highlight-box {
+        background-color: var(--highlight);
+        border-left: 4px solid var(--accent-color);
+        padding: 20px 25px;
+        margin: 30px 0;
+        border-radius: 0 4px 4px 0;
+      }
+
+      .highlight-box p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Visualization containers */
+      .visualization-section {
+        background-color: var(--section-bg);
+        border-radius: 8px;
+        padding: 40px;
+        margin: 40px 0;
+      }
+
+      .visualization-container {
+        width: 100%;
+        height: 400px;
+        margin: 30px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px dashed #ccc;
+        background-color: white;
+        border-radius: 4px;
+      }
+
+      .visualization-container p {
+        color: #888;
+        font-style: italic;
+      }
+
+      .visualization-description {
+        margin-top: 20px;
+      }
+
+      /* Interactive controls */
+      .interactive-controls {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      }
+
+      .interactive-controls select,
+      .interactive-controls button {
+        padding: 8px 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-right: 10px;
+        font-family: inherit;
+      }
+
+      .interactive-controls button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .interactive-controls button:hover {
+        background-color: #2d4a70;
+      }
+
+      /* Stats grid */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 30px 0;
+      }
+
+      .stat-card {
+        background-color: white;
+        border-radius: 8px;
+        padding: 25px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        margin: 10px 0;
+      }
+
+      .stat-label {
+        font-size: 1rem;
+        color: #666;
+        margin-bottom: 0;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 50px 0 20px;
+        margin-top: 50px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-column h3 {
+        color: white;
+        font-size: 1.2rem;
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-family: "Source Sans Pro", sans-serif;
+        font-weight: 600;
+      }
+
+      .footer-column p,
+      .footer-column a {
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 10px;
+        display: block;
+        text-decoration: none;
+      }
+
+      .footer-column a:hover {
+        color: white;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .site-title {
+          font-size: 2.5rem;
+        }
+
+        .site-subtitle {
+          font-size: 1.2rem;
+        }
+
+        .nav-container {
+          flex-direction: column;
+          padding: 15px 0;
+        }
+
+        .nav-links {
+          margin-top: 15px;
+        }
+
+        .nav-links li {
+          margin-left: 15px;
+          margin-right: 15px;
+        }
+
+        .visualization-section {
+          padding: 25px;
+        }
+      }
+
+      img.chart {
+        max-width: 100%;
+        height: auto;
+        border-radius: 6px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      figcaption {
+        font-style: italic;
+        text-align: center;
+        color: #555;
+        font-size: 0.95rem;
+      }
+
+      .article-quote {
+        font-family: "Playfair Display", serif;
+        font-size: 1.4rem;
+        line-height: 1.6;
+        font-style: italic;
+        color: var(--primary-color);
+        border-left: 4px solid var(--accent-color);
+        padding-left: 20px;
+        margin: 35px 0;
+      }
+
+      .article-highlight {
+        background-color: #f8f9fa;
+        padding: 25px;
+        margin: 30px 0;
+        border-radius: 6px;
+        border-left: 4px solid var(--primary-color);
+      }
+
+      .key-statistic {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--primary-color);
+      }
+
+      .risk-assessment-chart {
+        max-width: 700px;
+        margin: 30px auto;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1 class="site-title">
+          Behind the Grades: Mental Health Trends in Indian Students
+        </h1>
+        <p class="site-subtitle">
+          Exploring the connection between academic life and mental wellbeing
+        </p>
+      </div>
+    </header>
+
+    <nav>
+      <div class="container nav-container">
+        <a href="#" class="logo">Student Mental Health</a>
+        <ul class="nav-links">
+          <li><a href="#introduction">Overview</a></li>
+          <li><a href="#prevalence">Results</a></li>
+          <li><a href="#factors">Key Factors</a></li>
+          <li><a href="#geography">Regional Patterns</a></li>
+          <li><a href="#recommendations">Recommendations</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="container">
+      <section id="introduction" class="intro-section">
+        <h2>Understanding Student Mental Health</h2>
+
+        <p>
+          Across India, many university students balance their studies with
+          family expectations and personal goals. While this dedication often
+          leads to academic success, our research shows it may also impact
+          mental wellbeing.
+        </p>
+
+        <p>
+          In India's educational environment, students work hard to achieve good
+          grades. However, their mental health needs often receive less
+          attention. Our project examines data from nearly 28,000 university
+          students across India to better understand this issue and identify
+          what factors might contribute to student depression.
+        </p>
+
+        <div class="article-quote">
+          "Academic success is important, but student wellbeing matters too."
+        </div>
+
+        <p>
+          We chose this topic because student mental health is an important
+          issue that needs more attention. Our data shows that more than 60% of
+          students reported symptoms of depression. As students ourselves, we
+          understand these challenges and wanted to create visualizations that
+          help explain the different factors affecting mental health in
+          educational settings.
+        </p>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <p class="stat-label">Students Surveyed</p>
+            <div class="stat-number">27,901</div>
+            <p>University students across India</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Depression Prevalence</p>
+            <div class="stat-number">60%+</div>
+            <p>Students reporting depression symptoms</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Data features</p>
+            <div class="stat-number">17</div>
+            <p>Factors analyzed per student</p>
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <h3>About This Project</h3>
+          <p>
+            Our analysis uses the
+            <a
+              href="https://www.kaggle.com/datasets/adilshamim8/student-depression-dataset"
+              >Student Depression Dataset</a
+            >
+            from Kaggle. This dataset includes information about students'
+            mental health, academic performance (CGPA), lifestyle habits (sleep
+            patterns, social media usage), demographics (age, gender), and other
+            mental health indicators (suicidal thoughts, family history of
+            mental illness). Through our visualizations, we aim to show the
+            human story behind the statistics and help identify warning signs of
+            depression among students.
           </p>
         </div>
-      </div>
-  
-      <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
-        <img src="plots/age_distribution.png" alt="Age distribution" style="width: 300px; height: auto; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-        <div>
-          <h4 style="margin-bottom: 10px; color: #3A5E8C;">Age Distribution</h4>
-          <p style="max-width: 600px;">
-            Most students in our dataset are between 19 and 25 years old, which matches typical university ages. This makes our findings particularly relevant for understanding challenges students face during their university years.
-          </p>
+      </section>
+
+      <section id="dataset" class="visualization-section">
+        <h3>Understanding Our Data</h3>
+
+        <p>
+          Before creating visualizations, we wanted to understand what our
+          dataset really represents. Each row in our data shows one student's
+          life - their sleep habits, stress levels, and mental health. Each
+          number tells part of a story about nearly 28,000 university students
+          across India. Like most real-world data, these needed to be prepared
+          carefully.
+        </p>
+
+        <p>
+          The dataset had no missing values, which is unusual and helpful.
+          However, many columns had long labels and text responses instead of
+          numbers. To make the data easier to analyze while keeping its meaning
+          intact, we made several improvements.
+        </p>
+
+        <div class="article-highlight">
+          <h4>How We Prepared the Data</h4>
+          <ul style="padding-left: 20px; margin-bottom: 20px">
+            <li>
+              <strong>Making column names simpler:</strong> We changed long
+              names like <em>"Have you ever had suicidal thoughts?"</em> to
+              shorter ones like <code>Suicidal_Thoughts</code>.
+            </li>
+            <li>
+              <strong>Converting text to numbers:</strong> Yes/No answers became
+              1 for "Yes" and 0 for "No." We did this for columns like
+              <code>Suicidal_Thoughts</code> and <code>Family_History</code>.
+            </li>
+            <li>
+              <strong>Creating numerical scales:</strong> For categories like
+              <code>Financial_Stress</code>, we used numbers (Low = 1, Medium =
+              2, High = 3) to make comparisons easier.
+            </li>
+            <li>
+              <strong>Standardizing time measurements:</strong> Sleep
+              descriptions like "5–6 hours" became numeric values (5 hours) for
+              consistency.
+            </li>
+            <li>
+              <strong>Creating separate columns for categories:</strong>
+              Variables like <code>Gender</code> and
+              <code>Profession</code> were split into multiple yes/no columns
+              for better analysis.
+            </li>
+          </ul>
         </div>
-      </div>
-  
-      <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
-        <img src="plots/depression_pie_chart.png" alt="Depression prevalence pie chart" style="width: 300px; height: auto; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-        <div>
-          <h4 style="margin-bottom: 10px; color: #3A5E8C;">Prevalence of Depression</h4>
-          <p style="max-width: 600px;">
-            Over half of the students in our survey reported experiencing depression symptoms. This finding is the foundation of our research and guides our deeper analysis.
-          </p>
-        </div>
-      </div>
-  
-    </div>
-   </section>
-   
-   <section id="prevalence" class="visualization-section">
-     <h2>Depression Among Students: The Numbers</h2>
-     
-     <p>
-       When we analyzed our data, one finding stood out: a significant number of students report experiencing depression. The statistics show this is an important issue that needs attention.
-     </p>
-     
-     <div class="visualization-container" style="height: auto; padding: 20px; display: block;">
-       <img src="plots/Pie_chart_mental_health_risk.png" alt="Student Mental Health: Risk Assessment" class="risk-assessment-chart">
-       <figcaption>Mental health risk assessment among surveyed Indian students</figcaption>
-     </div>
-     
-     <div class="visualization-description">
-       <h3>Mental Health Concerns</h3>
-       <p>
-         More than 60% of students in our survey reported depression symptoms. This percentage is higher than what's typically found in the general population. This suggests that the university environment may create specific challenges for mental health.
-       </p>
-       
-       <p>
-         <span class="key-statistic">50% of students show signs of both depression and suicidal thoughts</span>, placing them in a high-risk category. Another 8.5% experience depression without suicidal thoughts, putting them in a moderate risk group. Only 41.5% of students reported no depression symptoms.
-       </p>
-     </div>
-     
-     <div class="article-quote">
-       "Our educational systems need to balance academic excellence with student wellbeing."
-     </div>
-     
-     <div class="visualization-description">
-       <h3>Education Level Analysis</h3>
-       <p>
-         Depression rates vary across different education levels. Undergraduate students show higher rates of depression, possibly due to the challenges of adjusting to university life and managing new academic expectations. This visualization helps identify when students might need the most support.
-       </p>
-     </div>
-   </section>
-   
-   <section id="factors" class="visualization-section">
-     <h2>What Influences Student Mental Health?</h2>
-     <p>
-       Several factors affect student mental health, from daily habits to academic pressures. 
-       In this section, we explore how different aspects of student life relate to depression, revealing potential risk factors and protective measures.
-     </p>
-     <div class="visualization-container" id="map-container" style="height: 600px; padding: 0;">
-     <iframe src="depression_visualization.html"
-              width="100%"
-              height="100%"
-              style="border: none; border-radius: 8px; display: block; margin: auto;"></iframe>
+
+        <p>
+          These changes made the dataset much easier to work with, allowing us
+          to better explore how different aspects of student life relate to
+          mental health.
+        </p>
+
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-top: 40px;
+          "
+        >
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 30px;
+              flex-wrap: wrap;
+            "
+          >
+            <img
+              src="plots/gender_distribution.png"
+              alt="Gender distribution"
+              style="
+                width: 300px;
+                height: auto;
+                border-radius: 6px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+              "
+            />
+            <div>
+              <h4 style="margin-bottom: 10px; color: #3a5e8c">
+                Gender Distribution
+              </h4>
+              <p style="max-width: 600px">
+                This chart shows we have similar numbers of male and female
+                students in our dataset. This balance makes our gender
+                comparisons more reliable throughout the analysis.
+              </p>
             </div>
-    <p>
-      We invite you to explore the interactive visualization above. It shows how different factors in a student's life connect to their mental health.
-    </p>
-    
-    <p>
-      Looking at the data this way reveals clear patterns. For example, we found that longer work hours link to higher depression rates. For each additional hour of work, depression likelihood increases by about 5% until reaching 9 hours, where it remains consistently high.
-    </p>
-    
-    <p>
-      Interestingly, we also found that students who report no academic pressure actually have a higher chance of depression than those with low academic pressure. This suggests that some level of academic engagement may be beneficial for mental health.
-    </p>
-    
-    <div class="visualization-description">
-      <h3>The Strongest Connections</h3>
-      <p>
-        While our interactive visualization shows trends for each factor, we wanted to know which factors have the strongest link to depression. We used statistical methods including Cramer's V and point-biserial correlation to find out. The results are shown below.
-      </p>
-      <img src="plots/correlation_strength.png" alt="Factor correlation with depression" style="width: 300px; height: auto; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-      <p>
-        The chart shows that <strong>academic pressure</strong> has the strongest connection to depression, followed by <strong>financial stress</strong>.
-      </p>
-    </div>
-     <div class="visualization-description">
-       <h3>Other Important Factors</h3>
-       <p>
-         While academic and financial stress show the strongest links to depression, we also found that <strong>sleep patterns</strong> and <strong>dietary habits</strong> play important roles. These are areas where students might have more control, offering potential ways to improve mental wellbeing even in demanding academic environments.
-       </p>
-     </div>
-     
-     <h3>Diet and Family History</h3>
-     <p>
-       Our analysis revealed an interesting relationship between diet, family history of mental illness, and depression. The chart below shows this connection:
-     </p>
-     
-     <div style="margin: 30px auto; max-width: 800px; text-align: center;">
-       <img src="plots/depression_factors_diet_and_Family_History.png" alt="How Diet and Family History Affect Depression Risk" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 3px 15px rgba(0,0,0,0.1);">
-       <figcaption style="margin-top: 15px; font-style: italic; color: #666;">
-         Chart showing how diet quality and family history relate to depression risk among surveyed students.
-       </figcaption>
-     </div>
-     
-     <p>
-       The data shows that students with both unhealthy diets and a family history of mental illness have the highest depression risk scores (0.73). Even students with no family history but unhealthy diets show elevated depression risk (0.68). This suggests that while genetics play a role, lifestyle choices are also important.
-     </p>
-     
-     <p>
-       Encouragingly, healthy dietary habits appear to provide some protection even for students with a family history of mental illness, with risk scores much lower (0.48) than those with poor diets. This finding suggests a practical way for students to potentially improve their mental health.
-     </p>
-   </section>
-   
-   <section id="geography" class="visualization-section">
-     <h2>Regional Patterns: Depression Across India</h2>
-     <p>
-      Where students study may affect how they feel. We mapped depression rates across Indian cities using our survey data. Each dot on the map represents a city, 
-      colored from green to red based on how many students reported depression symptoms. Darker red means more students in that location reported suicidal thoughts.
-    </p>
-     
-    <div class="visualization-container" id="map-container" style="height: 500px; padding: 0;">
-      <iframe src="city_depression_map_choropleth.html"
-              width="100%"
-              height="100%"
-              style="border: none; border-radius: 8px; display: block;"></iframe>
-    </div>
-    <p style="font-style: italic; color: #666; margin-top: 10px; text-align: center;">
-      Interactive map: Click on a city to see depression rates and student counts.
-    </p>
-     
-     <div class="visualization-description">
-       <p>
-        The map shows clear patterns of mental health across India. Many large cities show higher rates of student depression. In some urban areas, more than half of the surveyed students reported depression symptoms.
-       </p>
-       
-       <p>
-        While this map doesn't explain why students in certain areas struggle more, it provides valuable geographic insights. Cities with more stressful environments—whether from higher living costs, academic competition, or fewer support systems—often show more depression cases on our map.
-       </p>
-       
-       <p>
-        As you explore the map, you can see these patterns emerge. Each dot represents real students who face both academic demands and mental health challenges.
-       </p>
+          </div>
 
-     </div>
-   </section>
-   
-   <section id="recommendations">
-     <h2>Suggestions for Improvement</h2>
-     <p>
-       Based on our data analysis, we suggest several approaches that could help address mental health issues among Indian students. These recommendations are for different groups in the education system.
-     </p>
-     
-     <div class="highlight-box">
-       <h3>For Educational Institutions</h3>
-       <p>
-         Universities and colleges should make mental health a priority by creating accessible support services and awareness programs. Since poor sleep links strongly to depression, institutions could review assignment schedules and exam timings to allow for healthier sleep patterns. Adding stress management and emotional resilience training to the curriculum could provide students with practical coping skills.
-       </p>
-     </div>
-     
-     <div class="highlight-box">
-       <h3>For Students</h3>
-       <p>
-         Getting enough sleep appears especially important for mental health, with our data showing much lower depression rates among students who sleep 7-8 hours regularly. Limiting social media use and building supportive friendships also links to better mental health. Students should learn to recognize early signs of depression and seek help early, as this can prevent more serious problems.
-       </p>
-     </div>
-     
-     <div class="highlight-box">
-       <h3>For Parents and Families</h3>
-       <p>
-         Families play an important role in supporting student mental health. Our data suggests that high parental expectations about grades may contribute to depression in some cases. Parents should keep communication open about mental health, learn to recognize warning signs, and balance academic goals with overall wellbeing. Creating a home environment where students feel comfortable discussing mental health challenges helps ensure they get support when needed.
-       </p>
-     </div>
-     
-     <div class="article-quote">
-       "Success in education should include both academic achievement and good mental health."
-     </div>
-   </section>
- </main>
- 
- <footer>
-   <div class="container">
-     <div class="footer-grid">
-       <div class="footer-column">
-         <h3>About This Project</h3>
-         <p>Data visualization project developed by Group 14 at DTU.</p>
-         <p>Analysis based on the Student Depression Dataset from Kaggle.</p>
-       </div>
-       <div class="footer-column">
-         <h3>Team Members</h3>
-         <p>Pawel Nepelski (s233537)</p>
-         <p>Henrietta Domokos (s233107)</p>
-         <p>Upasana Paul (s242577)</p>
-       </div>
-       <div class="footer-column">
-         <h3>Data Source</h3>
-         <p>Student Depression Dataset</p>
-         <a href="https://www.kaggle.com/datasets/adilshamim8/student-depression-dataset" target="_blank">Kaggle Dataset Link</a>
-       </div>
-     </div>
-     
-     <div class="footer-bottom">
-       <p>&copy; 2025 | DTU Data Visualization Course | Group 14</p>
-     </div>
-   </div>
- </footer>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 30px;
+              flex-wrap: wrap;
+            "
+          >
+            <img
+              src="plots/age_distribution.png"
+              alt="Age distribution"
+              style="
+                width: 300px;
+                height: auto;
+                border-radius: 6px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+              "
+            />
+            <div>
+              <h4 style="margin-bottom: 10px; color: #3a5e8c">
+                Age Distribution
+              </h4>
+              <p style="max-width: 600px">
+                Most students in our dataset are between 19 and 25 years old,
+                which matches typical university ages. This makes our findings
+                particularly relevant for understanding challenges students face
+                during their university years.
+              </p>
+            </div>
+          </div>
 
- <script>
-   // Placeholder for visualization scripts
-   // Actual implementation will be added later
- </script>
-</body>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 30px;
+              flex-wrap: wrap;
+            "
+          >
+            <img
+              src="plots/depression_pie_chart.png"
+              alt="Depression prevalence pie chart"
+              style="
+                width: 300px;
+                height: auto;
+                border-radius: 6px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+              "
+            />
+            <div>
+              <h4 style="margin-bottom: 10px; color: #3a5e8c">
+                Prevalence of Depression
+              </h4>
+              <p style="max-width: 600px">
+                Over half of the students in our survey reported experiencing
+                depression symptoms. This finding is the foundation of our
+                research and guides our deeper analysis.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="prevalence" class="visualization-section">
+        <h2>Depression Among Students: The Numbers</h2>
+
+        <p>
+          When we analyzed our data, one finding stood out: a significant number
+          of students report experiencing depression. The statistics show this
+          is an important issue that needs attention.
+        </p>
+
+        <div
+          class="visualization-container"
+          style="height: auto; padding: 20px; display: block"
+        >
+          <img
+            src="plots/Pie_chart_mental_health_risk.png"
+            alt="Student Mental Health: Risk Assessment"
+            class="risk-assessment-chart"
+          />
+          <figcaption>
+            Mental health risk assessment among surveyed Indian students
+          </figcaption>
+        </div>
+
+        <div class="visualization-description">
+          <h3>Mental Health Concerns</h3>
+          <p>
+            More than 60% of students in our survey reported depression
+            symptoms. This percentage is higher than what's typically found in
+            the general population. This suggests that the university
+            environment may create specific challenges for mental health.
+          </p>
+
+          <p>
+            <span class="key-statistic"
+              >50% of students show signs of both depression and suicidal
+              thoughts</span
+            >, placing them in a high-risk category. Another 8.5% experience
+            depression without suicidal thoughts, putting them in a moderate
+            risk group. Only 41.5% of students reported no depression symptoms.
+          </p>
+        </div>
+
+        <div class="article-quote">
+          "Our educational systems need to balance academic excellence with
+          student wellbeing."
+        </div>
+
+        <div class="visualization-description">
+          <h3>Education Level Analysis</h3>
+          <p>
+            Depression rates vary across different education levels.
+            Undergraduate students show higher rates of depression, possibly due
+            to the challenges of adjusting to university life and managing new
+            academic expectations. This visualization helps identify when
+            students might need the most support.
+          </p>
+        </div>
+      </section>
+
+      <section id="factors" class="visualization-section">
+        <h2>What Influences Student Mental Health?</h2>
+        <p>
+          Several factors affect student mental health, from daily habits to
+          academic pressures. In this section, we explore how different aspects
+          of student life relate to depression, revealing potential risk factors
+          and protective measures.
+        </p>
+        <div
+          class="visualization-container"
+          id="map-container"
+          style="height: 600px; padding: 0"
+        >
+          <iframe
+            src="depression_visualization.html"
+            width="100%"
+            height="100%"
+            style="
+              border: none;
+              border-radius: 8px;
+              display: block;
+              margin: auto;
+            "
+          ></iframe>
+        </div>
+        <p>
+          We invite you to explore the interactive visualization above. It shows
+          how different factors in a student's life connect to their mental
+          health.
+        </p>
+
+        <p>
+          Looking at the data this way reveals clear patterns. For example, we
+          found that longer work hours link to higher depression rates. For each
+          additional hour of work, depression likelihood increases by about 5%
+          until reaching 9 hours, where it remains consistently high.
+        </p>
+
+        <p>
+          Interestingly, we also found that students who report no academic
+          pressure actually have a higher chance of depression than those with
+          low academic pressure. This suggests that some level of academic
+          engagement may be beneficial for mental health.
+        </p>
+
+        <div class="visualization-description">
+          <h3>The Strongest Connections</h3>
+          <p>
+            While our interactive visualization shows trends for each factor, we
+            wanted to know which factors have the strongest link to depression.
+            We used statistical measures including Cramer's V and point-biserial
+            correlation to find out. The results are shown below.
+          </p>
+          <div style="text-align: center; width: 100%">
+            <img
+              src="plots/correlation_strength.png"
+              alt="Factor correlation with depression"
+              style="
+                width: 500px;
+                height: auto;
+                border-radius: 6px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+              "
+            />
+          </div>
+          <p>
+            The chart shows that <strong>academic pressure</strong> has the
+            strongest connection to depression, followed by
+            <strong>financial stress</strong>.
+          </p>
+        </div>
+        <div class="visualization-description">
+          <h3>Other Important Factors</h3>
+          <p>
+            While academic and financial stress show the strongest links to
+            depression, we also found that <strong>sleep patterns</strong> and
+            <strong>dietary habits</strong> play important roles. These are
+            areas where students might have more control, offering potential
+            ways to improve mental wellbeing even in demanding academic
+            environments.
+          </p>
+        </div>
+
+        <h3>Diet and Family History</h3>
+        <p>
+          Our analysis revealed an interesting relationship between diet, family
+          history of mental illness, and depression. The chart below shows this
+          connection:
+        </p>
+
+        <div style="margin: 30px auto; max-width: 800px; text-align: center">
+          <img
+            src="plots/depression_factors_diet_and_Family_History.png"
+            alt="How Diet and Family History Affect Depression Risk"
+            style="
+              max-width: 100%;
+              height: auto;
+              border-radius: 8px;
+              box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            "
+          />
+          <figcaption style="margin-top: 15px; font-style: italic; color: #666">
+            Chart showing how diet quality and family history relate to
+            depression risk among surveyed students.
+          </figcaption>
+        </div>
+
+        <p>
+          The data shows that students with both unhealthy diets and a family
+          history of mental illness have the highest depression risk scores
+          (0.73). Even students with no family history but unhealthy diets show
+          elevated depression risk (0.68). This suggests that while genetics
+          play a role, lifestyle choices are also important.
+        </p>
+
+        <p>
+          Encouragingly, healthy dietary habits appear to provide some
+          protection even for students with a family history of mental illness,
+          with risk scores much lower (0.48) than those with poor diets. This
+          finding suggests a practical way for students to potentially improve
+          their mental health.
+        </p>
+      </section>
+
+      <section id="geography" class="visualization-section">
+        <h2>Regional Patterns: Depression Across India</h2>
+        <p>
+          Where students study may affect how they feel. We mapped depression
+          rates across Indian cities using our survey data. Each dot on the map
+          represents a city, colored from green to red based on how many
+          students reported depression symptoms. Darker red means more students
+          in that location reported suicidal thoughts.
+        </p>
+
+        <div
+          class="visualization-container"
+          id="map-container"
+          style="height: 500px; padding: 0"
+        >
+          <iframe
+            src="city_depression_map_choropleth.html"
+            width="100%"
+            height="100%"
+            style="border: none; border-radius: 8px; display: block"
+          ></iframe>
+        </div>
+        <p
+          style="
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+            text-align: center;
+          "
+        >
+          Interactive map: Click on a city to see depression rates and student
+          counts.
+        </p>
+
+        <div class="visualization-description">
+          <p>
+            The map shows clear patterns of mental health across India. Many
+            large cities show higher rates of student depression. In some urban
+            areas, more than half of the surveyed students reported depression
+            symptoms.
+          </p>
+
+          <p>
+            While this map doesn't explain why students in certain areas
+            struggle more, it provides valuable geographic insights. Cities with
+            more stressful environments—whether from higher living costs,
+            academic competition, or fewer support systems—often show more
+            depression cases on our map.
+          </p>
+
+          <p>
+            As you explore the map, you can see these patterns emerge. Each dot
+            represents real students who face both academic demands and mental
+            health challenges.
+          </p>
+        </div>
+      </section>
+
+      <section id="recommendations">
+        <h2>Suggestions for Improvement</h2>
+        <p>
+          Based on our data analysis, we suggest several approaches that could
+          help address mental health issues among Indian students. These
+          recommendations are for different groups in the education system.
+        </p>
+
+        <div class="highlight-box">
+          <h3>For Educational Institutions</h3>
+          <p>
+            Universities and colleges should make mental health a priority by
+            creating accessible support services and awareness programs. Since
+            poor sleep links strongly to depression, institutions could review
+            assignment schedules and exam timings to allow for healthier sleep
+            patterns. Adding stress management and emotional resilience training
+            to the curriculum could provide students with practical coping
+            skills.
+          </p>
+        </div>
+
+        <div class="highlight-box">
+          <h3>For Students</h3>
+          <p>
+            Getting enough sleep appears especially important for mental health,
+            with our data showing much lower depression rates among students who
+            sleep 7-8 hours regularly. Limiting social media use and building
+            supportive friendships also links to better mental health. Students
+            should learn to recognize early signs of depression and seek help
+            early, as this can prevent more serious problems.
+          </p>
+        </div>
+
+        <div class="highlight-box">
+          <h3>For Parents and Families</h3>
+          <p>
+            Families play an important role in supporting student mental health.
+            Our data suggests that high parental expectations about grades may
+            contribute to depression in some cases. Parents should keep
+            communication open about mental health, learn to recognize warning
+            signs, and balance academic goals with overall wellbeing. Creating a
+            home environment where students feel comfortable discussing mental
+            health challenges helps ensure they get support when needed.
+          </p>
+        </div>
+
+        <div class="article-quote">
+          "Success in education should include both academic achievement and
+          good mental health."
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-column">
+            <h3>About This Project</h3>
+            <p>Data visualization project developed by Group 14 at DTU.</p>
+            <p>Analysis based on the Student Depression Dataset from Kaggle.</p>
+          </div>
+          <div class="footer-column">
+            <h3>Team Members</h3>
+            <p>Pawel Nepelski (s233537)</p>
+            <p>Henrietta Domokos (s233107)</p>
+            <p>Upasana Paul (s242577)</p>
+          </div>
+          <div class="footer-column">
+            <h3>Data Source</h3>
+            <p>Student Depression Dataset</p>
+            <a
+              href="https://www.kaggle.com/datasets/adilshamim8/student-depression-dataset"
+              target="_blank"
+              >Kaggle Dataset Link</a
+            >
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 | DTU Data Visualization Course | Group 14</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Placeholder for visualization scripts
+      // Actual implementation will be added later
+    </script>
+  </body>
 </html>
