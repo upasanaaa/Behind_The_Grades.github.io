@@ -373,7 +373,7 @@
  <header>
    <div class="container">
      <h1 class="site-title">Behind the Grades: Mental Health Trends in Indian Students</h1>
-     <p class="site-subtitle">A deep dive into the psychological cost of academic achievement</p>
+     <p class="site-subtitle">Exploring the connection between academic life and mental wellbeing</p>
    </div>
  </header>
  
@@ -381,33 +381,33 @@
    <div class="container nav-container">
      <a href="#" class="logo">Student Mental Health</a>
      <ul class="nav-links">
-       <li><a href="#introduction">The Story</a></li>
-       <li><a href="#prevalence">The Numbers</a></li>
-       <li><a href="#factors">Root Causes</a></li>
-       <li><a href="#geography">Mapping Depression</a></li>
-       <li><a href="#recommendations">Finding Solutions</a></li>
+       <li><a href="#introduction">Overview</a></li>
+       <li><a href="#prevalence">Results</a></li>
+       <li><a href="#factors">Key Factors</a></li>
+       <li><a href="#geography">Regional Patterns</a></li>
+       <li><a href="#recommendations">Recommendations</a></li>
      </ul>
    </div>
  </nav>
  
  <main class="container">
    <section id="introduction" class="intro-section">
-     <h2>Beneath the Surface of Academic Excellence</h2>
+     <h2>Understanding Student Mental Health</h2>
      
      <p>
-       Every morning across India, millions of students wake up before dawn. They study into the night, compete fiercely for top grades, and bear the weight of their families' expectations. But behind the celebrated success stories of India's educational system lies a troubling reality that few are willing to discuss.
+       Across India, many university students balance their studies with family expectations and personal goals. While this dedication often leads to academic success, our research shows it may also impact mental wellbeing.
      </p>
      
      <p>
-       In India's competitive educational environment, students face immense pressure to excel academically. While their achievements are celebrated, the mental health challenges they face often remain hidden. Our project examines data from nearly 28,000 university students across India to understand the scope of this silent crisis and identify factors that contribute to student depression.
+       In India's educational environment, students work hard to achieve good grades. However, their mental health needs often receive less attention. Our project examines data from nearly 28,000 university students across India to better understand this issue and identify what factors might contribute to student depression.
      </p>
      
      <div class="article-quote">
-       "When we see high-achieving students, we often miss the psychological cost they're paying for that success."
+       "Academic success is important, but student wellbeing matters too."
      </div>
      
      <p>
-       We chose to focus on this issue because student mental health represents an urgent yet frequently overlooked problem. With more than 60% of students in our dataset reporting depression symptoms, there's a clear need to shed light on the struggles that exist beneath the surface of academic achievement. As students ourselves, we connect with these challenges and wanted to create visualizations that help others understand the complex factors influencing mental wellbeing in educational settings.
+       We chose this topic because student mental health is an important issue that needs more attention. Our data shows that more than 60% of students reported symptoms of depression. As students ourselves, we understand these challenges and wanted to create visualizations that help explain the different factors affecting mental health in educational settings.
      </p>
      
      <div class="stats-grid">
@@ -431,35 +431,35 @@
      <div class="highlight-box">
        <h3>About This Project</h3>
        <p>
-         Our analysis uses the <a href="https://www.kaggle.com/datasets/adilshamim8/student-depression-dataset" >Student Depression Dataset</a> from Kaggle, which includes comprehensive information about students' mental health status, academic performance (CGPA), lifestyle habits (sleep patterns, social media usage), demographics (age, gender), and other mental health indicators (suicidal thoughts, family history of mental illness). Through interactive visualizations, we aim to tell a human story that goes beyond statistics and helps identify warning signs and risk factors for depression among students.
+         Our analysis uses the <a href="https://www.kaggle.com/datasets/adilshamim8/student-depression-dataset">Student Depression Dataset</a> from Kaggle. This dataset includes information about students' mental health, academic performance (CGPA), lifestyle habits (sleep patterns, social media usage), demographics (age, gender), and other mental health indicators (suicidal thoughts, family history of mental illness). Through our visualizations, we aim to show the human story behind the statistics and help identify warning signs of depression among students.
        </p>
      </div>
    </section>
 
    <section id="dataset" class="visualization-section">
-    <h3>Behind the Numbers: Understanding Our Data</h3>
+    <h3>Understanding Our Data</h3>
   
     <p>
-      Before diving into visualizations and statistics, we wanted to understand the human experiences captured in our dataset. Each row represents a student's life - their sleep patterns, stress levels, and mental state. Each number tells part of a larger story about nearly 28,000 university students across India. But like any real-world data, these stories needed careful handling to be told accurately.
+      Before creating visualizations, we wanted to understand what our dataset really represents. Each row in our data shows one student's life - their sleep habits, stress levels, and mental health. Each number tells part of a story about nearly 28,000 university students across India. Like most real-world data, these needed to be prepared carefully.
     </p>
   
     <p>
-      Fortunately, the dataset had no missing values, which is remarkably rare in survey data. Still, several columns contained long or inconsistent labels, and many responses were written as words instead of numbers. To make the dataset easier to work with while preserving the human experiences it represents, we performed a series of preprocessing steps.
+      The dataset had no missing values, which is unusual and helpful. However, many columns had long labels and text responses instead of numbers. To make the data easier to analyze while keeping its meaning intact, we made several improvements.
     </p>
   
     <div class="article-highlight">
       <h4>How We Prepared the Data</h4>
       <ul style="padding-left: 20px; margin-bottom: 20px;">
-        <li><strong>Simplifying column names:</strong> Long labels like <em>"Have you ever had suicidal thoughts?"</em> were renamed to something more manageable, like <code>Suicidal_Thoughts</code>.</li>
-        <li><strong>Turning words into numbers:</strong> Yes/No answers were converted into binary format — 1 for "Yes," 0 for "No." This was applied to columns like <code>Suicidal_Thoughts</code> and <code>Family_History</code>.</li>
-        <li><strong>Ranking stress levels:</strong> Ordered categories such as <code>Financial_Stress</code> were encoded numerically — Low = 1, Medium = 2, High = 3 — so we could compare stress levels more meaningfully.</li>
-        <li><strong>Making time measurable:</strong> Sleep duration categories like "5–6 hours" or "Less than 5 hours" were mapped to estimated numeric values (e.g., 5 or 4 hours) for consistency.</li>
-        <li><strong>One-hot encoding:</strong> Variables like <code>Gender</code> and <code>Profession</code> were split into multiple binary columns so they could be analyzed without assuming any order or hierarchy.</li>
+        <li><strong>Making column names simpler:</strong> We changed long names like <em>"Have you ever had suicidal thoughts?"</em> to shorter ones like <code>Suicidal_Thoughts</code>.</li>
+        <li><strong>Converting text to numbers:</strong> Yes/No answers became 1 for "Yes" and 0 for "No." We did this for columns like <code>Suicidal_Thoughts</code> and <code>Family_History</code>.</li>
+        <li><strong>Creating numerical scales:</strong> For categories like <code>Financial_Stress</code>, we used numbers (Low = 1, Medium = 2, High = 3) to make comparisons easier.</li>
+        <li><strong>Standardizing time measurements:</strong> Sleep descriptions like "5–6 hours" became numeric values (5 hours) for consistency.</li>
+        <li><strong>Creating separate columns for categories:</strong> Variables like <code>Gender</code> and <code>Profession</code> were split into multiple yes/no columns for better analysis.</li>
       </ul>
     </div>
   
     <p>
-      These changes made the dataset much cleaner, allowing us to explore the relationships between stress, lifestyle, and mental health in a more precise way - and ultimately to better tell the stories behind the numbers.
+      These changes made the dataset much easier to work with, allowing us to better explore how different aspects of student life relate to mental health.
     </p>
   
     <div style="display: flex; flex-direction: column; gap: 40px; margin-top: 40px;">
@@ -469,7 +469,7 @@
         <div>
           <h4 style="margin-bottom: 10px; color: #3A5E8C;">Gender Distribution</h4>
           <p style="max-width: 600px;">
-            This chart shows a relatively even mix of male and female respondents. It is an important detail that makes gender comparisons meaningful throughout the analysis.
+            This chart shows we have similar numbers of male and female students in our dataset. This balance makes our gender comparisons more reliable throughout the analysis.
           </p>
         </div>
       </div>
@@ -479,7 +479,7 @@
         <div>
           <h4 style="margin-bottom: 10px; color: #3A5E8C;">Age Distribution</h4>
           <p style="max-width: 600px;">
-            Most students in the dataset are between 19 and 25 years old, which reflects the typical university demographic. This makes the data especially relevant for understanding challenges faced during the academic years.
+            Most students in our dataset are between 19 and 25 years old, which matches typical university ages. This makes our findings particularly relevant for understanding challenges students face during their university years.
           </p>
         </div>
       </div>
@@ -489,7 +489,7 @@
         <div>
           <h4 style="margin-bottom: 10px; color: #3A5E8C;">Prevalence of Depression</h4>
           <p style="max-width: 600px;">
-            Over half of the students surveyed show signs of depression. This chart represents the emotional core of our story and sets the stage for the deeper analyses that follow.
+            Over half of the students in our survey reported experiencing depression symptoms. This finding is the foundation of our research and guides our deeper analysis.
           </p>
         </div>
       </div>
@@ -498,10 +498,10 @@
    </section>
    
    <section id="prevalence" class="visualization-section">
-     <h2>The Scale of the Problem: Depression by the Numbers</h2>
+     <h2>Depression Among Students: The Numbers</h2>
      
      <p>
-       As we began analyzing our data, one figure stood out immediately: the sheer number of students suffering in silence. The statistics paint a picture of a widespread mental health crisis that demands urgent attention.
+       When we analyzed our data, one finding stood out: a significant number of students report experiencing depression. The statistics show this is an important issue that needs attention.
      </p>
      
      <div class="visualization-container" style="height: auto; padding: 20px; display: block;">
@@ -510,33 +510,33 @@
      </div>
      
      <div class="visualization-description">
-       <h3>A Crisis in Plain Sight</h3>
+       <h3>Mental Health Concerns</h3>
        <p>
-         More than 60% of surveyed students report experiencing depression symptoms, a figure significantly higher than in the general population. This widespread prevalence suggests that the academic environment may create unique pressures that affect mental health.
+         More than 60% of students in our survey reported depression symptoms. This percentage is higher than what's typically found in the general population. This suggests that the university environment may create specific challenges for mental health.
        </p>
        
        <p>
-         <span class="key-statistic">50% of students fall into the high-risk category</span>, showing signs of both depression and suicidal thoughts. Another 8.5% experience depression without suicidal ideation, placing them in the moderate risk group. Only 41.5% of students reported no depression symptoms.
+         <span class="key-statistic">50% of students show signs of both depression and suicidal thoughts</span>, placing them in a high-risk category. Another 8.5% experience depression without suicidal thoughts, putting them in a moderate risk group. Only 41.5% of students reported no depression symptoms.
        </p>
      </div>
      
      <div class="article-quote">
-       "The numbers tell a story that many have been afraid to speak aloud: our educational system is producing excellent students, but at what cost to their mental health?"
+       "Our educational systems need to balance academic excellence with student wellbeing."
      </div>
      
      <div class="visualization-description">
        <h3>Education Level Analysis</h3>
        <p>
-         Depression rates vary significantly across different education levels. Undergraduate students show particularly high rates of depression, possibly reflecting the challenges of transitioning to university life and coping with new academic expectations. The visualization above allows us to compare depression prevalence across education levels, helping identify when students might be most vulnerable.
+         Depression rates vary across different education levels. Undergraduate students show higher rates of depression, possibly due to the challenges of adjusting to university life and managing new academic expectations. This visualization helps identify when students might need the most support.
        </p>
      </div>
    </section>
    
    <section id="factors" class="visualization-section">
-     <h2>Behind the Statistics: What Drives Student Depression?</h2>
+     <h2>What Influences Student Mental Health?</h2>
      <p>
-       Multiple factors influence student mental health, from lifestyle choices to academic pressures. 
-       In this section, we explore how various aspects of student life correlate with depression, providing insights into potential risk factors and protective measures.
+       Several factors affect student mental health, from daily habits to academic pressures. 
+       In this section, we explore how different aspects of student life relate to depression, revealing potential risk factors and protective measures.
      </p>
      <div class="visualization-container" id="map-container" style="height: 600px; padding: 0;">
      <iframe src="../depression_visualization.html"
@@ -545,60 +545,60 @@
               style="border: none; border-radius: 8px; display: block; margin: auto;"></iframe>
             </div>
     <p>
-      We invite you to explore the interactive visualization above. It allows you to see how different factors in a student's life connect to their mental health outcomes.
+      We invite you to explore the interactive visualization above. It shows how different factors in a student's life connect to their mental health.
     </p>
     
     <p>
-      Looking at the data this way reveals important patterns. For instance, we can clearly see how increasing workloads correlate with higher rates of depression. With each additional hour of work, the likelihood of depression increases by roughly 5% until reaching the 9-hour mark, where the rate stabilizes at a consistently high level.
+      Looking at the data this way reveals clear patterns. For example, we found that longer work hours link to higher depression rates. For each additional hour of work, depression likelihood increases by about 5% until reaching 9 hours, where it remains consistently high.
     </p>
     
     <p>
-      Interestingly, the data also reveals a counterintuitive finding: students who report no academic pressure actually have a higher chance of depression than those with low levels of academic pressure. This suggests that some engagement with academics may be protective, but only up to a point.
+      Interestingly, we also found that students who report no academic pressure actually have a higher chance of depression than those with low academic pressure. This suggests that some level of academic engagement may be beneficial for mental health.
     </p>
     
     <div class="visualization-description">
       <h3>The Strongest Connections</h3>
       <p>
-        While the interactive visualization shows depression trends for each category, we wanted to know which factors are most strongly linked to depression. To find out, we tested the correlation between each factor and depression rates using statistical methods including Cramer's V and point-biserial correlation. The results are shown in the chart below.
+        While our interactive visualization shows trends for each factor, we wanted to know which factors have the strongest link to depression. We used statistical methods including Cramer's V and point-biserial correlation to find out. The results are shown below.
       </p>
       <img src="../plots/correlation_strength.png" alt="Factor correlation with depression" style="width: 300px; height: auto; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <p>
-        The chart shows that by far the most correlated factor with depression is <strong>academic pressure</strong>, followed by <strong>financial stress</strong>.
+        The chart shows that <strong>academic pressure</strong> has the strongest connection to depression, followed by <strong>financial stress</strong>.
       </p>
     </div>
      <div class="visualization-description">
-       <h3>Beyond the Obvious</h3>
+       <h3>Other Important Factors</h3>
        <p>
-         While financial and academic stress show the strongest correlation with depression, we also found that <strong>sleep patterns</strong> and <strong>dietary habits</strong> play crucial roles. These are factors that students might have more direct control over in their daily lives, offering potential pathways for improving mental wellbeing even within high-pressure academic environments.
+         While academic and financial stress show the strongest links to depression, we also found that <strong>sleep patterns</strong> and <strong>dietary habits</strong> play important roles. These are areas where students might have more control, offering potential ways to improve mental wellbeing even in demanding academic environments.
        </p>
      </div>
      
-     <h3>The Combined Impact of Diet and Family History</h3>
+     <h3>Diet and Family History</h3>
      <p>
-       Our analysis revealed a particularly striking relationship between dietary habits, family history of mental illness, and depression severity. The chart below illustrates this connection clearly:
+       Our analysis revealed an interesting relationship between diet, family history of mental illness, and depression. The chart below shows this connection:
      </p>
      
      <div style="margin: 30px auto; max-width: 800px; text-align: center;">
        <img src="../plots/depression_factors_diet_and_Family_History.png" alt="How Diet and Family History Affect Depression Risk" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 3px 15px rgba(0,0,0,0.1);">
        <figcaption style="margin-top: 15px; font-style: italic; color: #666;">
-         Chart showing the relationship between diet quality, family history, and depression risk scores among surveyed students.
+         Chart showing how diet quality and family history relate to depression risk among surveyed students.
        </figcaption>
      </div>
      
      <p>
-       The data tells a compelling story: students with both unhealthy diets and a family history of mental illness show the highest depression risk scores (0.73). Even with no family history, unhealthy dietary habits are associated with elevated depression risk (0.68). This suggests that while genetic factors play a role, lifestyle choices remain significant.
+       The data shows that students with both unhealthy diets and a family history of mental illness have the highest depression risk scores (0.73). Even students with no family history but unhealthy diets show elevated depression risk (0.68). This suggests that while genetics play a role, lifestyle choices are also important.
      </p>
      
      <p>
-       Perhaps most encouragingly, the data shows that healthy dietary habits appear to provide a protective effect even for students with a family history of mental illness, with risk scores significantly lower (0.48) than those with poor diets. This finding offers a tangible intervention point for students concerned about their mental health.
+       Encouragingly, healthy dietary habits appear to provide some protection even for students with a family history of mental illness, with risk scores much lower (0.48) than those with poor diets. This finding suggests a practical way for students to potentially improve their mental health.
      </p>
    </section>
    
    <section id="geography" class="visualization-section">
-     <h2>The Geography of Distress: Mapping Depression Across India</h2>
+     <h2>Regional Patterns: Depression Across India</h2>
      <p>
-      Where you study may significantly affect how you feel. To explore this dimension, we mapped depression rates across Indian cities using our survey data. Each dot on the map represents a city, 
-      colored from green to dark red depending on how many students reported symptoms of depression. The darker red the circle, the more students reported suicidal thoughts from that location.
+      Where students study may affect how they feel. We mapped depression rates across Indian cities using our survey data. Each dot on the map represents a city, 
+      colored from green to red based on how many students reported depression symptoms. Darker red means more students in that location reported suicidal thoughts.
     </p>
      
     <div class="visualization-container" id="map-container" style="height: 500px; padding: 0;">
@@ -613,49 +613,49 @@
      
      <div class="visualization-description">
        <p>
-        The results paint a striking picture of mental health across the country. In many large cities, the rate of depression among students appears worryingly high. In some urban centers, more than half of the surveyed students reported signs of depression.
+        The map shows clear patterns of mental health across India. Many large cities show higher rates of student depression. In some urban areas, more than half of the surveyed students reported depression symptoms.
        </p>
        
        <p>
-        While this map doesn't explain <em>why</em> students are struggling, it provides valuable geographic insights. Cities with more stressful environments—whether due to cost of living, academic competition, or lack of support systems—tend to show deeper shades of red on our map.
+        While this map doesn't explain why students in certain areas struggle more, it provides valuable geographic insights. Cities with more stressful environments—whether from higher living costs, academic competition, or fewer support systems—often show more depression cases on our map.
        </p>
        
        <p>
-        As you explore the map, invisible patterns start to emerge. These aren't just data points—they represent thousands of young people who bear immense pressure to perform but are rarely asked about their wellbeing.
+        As you explore the map, you can see these patterns emerge. Each dot represents real students who face both academic demands and mental health challenges.
        </p>
 
      </div>
    </section>
    
    <section id="recommendations">
-     <h2>Turning Insights Into Action</h2>
+     <h2>Suggestions for Improvement</h2>
      <p>
-       Based on our analysis of the data, we propose several evidence-based approaches that could help address the mental health crisis among Indian students. These recommendations target different stakeholders in the educational ecosystem.
+       Based on our data analysis, we suggest several approaches that could help address mental health issues among Indian students. These recommendations are for different groups in the education system.
      </p>
      
      <div class="highlight-box">
        <h3>For Educational Institutions</h3>
        <p>
-         Universities and colleges should prioritize mental health by establishing accessible support services and creating awareness programs. Considering the correlation between sleep deprivation and depression, institutions might benefit from reviewing assignment schedules and exam timings to allow for healthier sleep patterns. Additionally, incorporating stress management and emotional resilience into the curriculum could provide students with practical coping skills.
+         Universities and colleges should make mental health a priority by creating accessible support services and awareness programs. Since poor sleep links strongly to depression, institutions could review assignment schedules and exam timings to allow for healthier sleep patterns. Adding stress management and emotional resilience training to the curriculum could provide students with practical coping skills.
        </p>
      </div>
      
      <div class="highlight-box">
        <h3>For Students</h3>
        <p>
-         Maintaining healthy sleep habits appears crucial for mental wellbeing, with our data showing significantly lower depression rates among students who sleep 7-8 hours regularly. Limiting social media usage and building supportive social connections also correlates with better mental health outcomes. Students should be encouraged to recognize early signs of depression and seek help promptly, as early intervention can prevent more serious mental health issues.
+         Getting enough sleep appears especially important for mental health, with our data showing much lower depression rates among students who sleep 7-8 hours regularly. Limiting social media use and building supportive friendships also links to better mental health. Students should learn to recognize early signs of depression and seek help early, as this can prevent more serious problems.
        </p>
      </div>
      
      <div class="highlight-box">
        <h3>For Parents and Families</h3>
        <p>
-         Families play a crucial role in supporting student mental health. Our data suggests that high parental expectations regarding academic performance may contribute to depression in some cases. Parents should be encouraged to maintain open communication about mental health issues, recognize warning signs, and prioritize overall wellbeing alongside academic achievement. Creating home environments where students feel comfortable discussing mental health challenges can help ensure timely support.
+         Families play an important role in supporting student mental health. Our data suggests that high parental expectations about grades may contribute to depression in some cases. Parents should keep communication open about mental health, learn to recognize warning signs, and balance academic goals with overall wellbeing. Creating a home environment where students feel comfortable discussing mental health challenges helps ensure they get support when needed.
        </p>
      </div>
      
      <div class="article-quote">
-       "The path forward is clear: we must reimagine success in education to include not just academic achievement, but also mental wellbeing."
+       "Success in education should include both academic achievement and good mental health."
      </div>
    </section>
  </main>
