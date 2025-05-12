@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bokeh Plot</title>
+    <style>
+      html, body {
+        box-sizing: border-box;
+        display: flow-root;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-3.7.2.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.7.2.min.js"></script>
+    <script type="text/javascript">
+        Bokeh.set_log_level("info");
+    </script>
+  </head>
+  <body>
+    <div id="f78a8c61-19c7-4e93-aa6b-0a88ada8a701" data-root-id="p1038" style="display: contents;"></div>
+  
+    <script type="application/json" id="c96689ba-020d-4c4d-8902-22a5ccf1abd1">
+      {"f9a3c549-514a-4a92-b15f-1dbc6323e512":{"version":"3.7.2","title":"Bokeh Application","roots":[{"type":"object","name":"Column","id":"p1038","attributes":{"children":[{"type":"object","name":"Select","id":"p1036","attributes":{"js_property_callbacks":{"type":"map","entries":[["change:value",[{"type":"object","name":"CustomJS","id":"p1037","attributes":{"args":{"type":"map","entries":[["source",{"type":"object","name":"ColumnDataSource","id":"p1001","attributes":{"selected":{"type":"object","name":"Selection","id":"p1002","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1003"},"data":{"type":"map","entries":[["x",[["0.0","Not Depressed"],["0.0","Depressed"],["1.0","Not Depressed"],["1.0","Depressed"],["2.0","Not Depressed"],["2.0","Depressed"],["3.0","Not Depressed"],["3.0","Depressed"],["4.0","Not Depressed"],["4.0","Depressed"],["5.0","Not Depressed"],["5.0","Depressed"]]],["percent",[55.55555555555556,44.44444444444444,80.58737762966048,19.412622370339513,62.51795117280996,37.48204882719005,39.84186545162155,60.15813454837845,23.860329776915616,76.1396702230844,13.913595933926304,86.0864040660737]]]}}}],["plot",{"type":"object","name":"Figure","id":"p1005","attributes":{"width":1200,"height":500,"x_range":{"type":"object","name":"FactorRange","id":"p1004","attributes":{"factors":[["0.0","Not Depressed"],["0.0","Depressed"],["1.0","Not Depressed"],["1.0","Depressed"],["2.0","Not Depressed"],["2.0","Depressed"],["3.0","Not Depressed"],["3.0","Depressed"],["4.0","Not Depressed"],["4.0","Depressed"],["5.0","Not Depressed"],["5.0","Depressed"]]}},"y_range":{"type":"object","name":"DataRange1d","id":"p1007"},"x_scale":{"type":"object","name":"CategoricalScale","id":"p1015"},"y_scale":{"type":"object","name":"LinearScale","id":"p1016"},"title":{"type":"object","name":"Title","id":"p1008","attributes":{"text":"Depression % by Academic Pressure"}},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1033","attributes":{"data_source":{"id":"p1001"},"view":{"type":"object","name":"CDSView","id":"p1034","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1035"}}},"glyph":{"type":"object","name":"VBar","id":"p1030","attributes":{"x":{"type":"field","field":"x"},"width":{"type":"value","value":0.8},"top":{"type":"field","field":"percent"},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"VBar","id":"p1031","attributes":{"x":{"type":"field","field":"x"},"width":{"type":"value","value":0.8},"top":{"type":"field","field":"percent"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"VBar","id":"p1032","attributes":{"x":{"type":"field","field":"x"},"width":{"type":"value","value":0.8},"top":{"type":"field","field":"percent"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1014"},"toolbar_location":null,"left":[{"type":"object","name":"LinearAxis","id":"p1022","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1023","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1024"},"axis_label":"% of students per category","major_label_policy":{"type":"object","name":"AllLabels","id":"p1025"}}}],"below":[{"type":"object","name":"CategoricalAxis","id":"p1017","attributes":{"ticker":{"type":"object","name":"CategoricalTicker","id":"p1018"},"formatter":{"type":"object","name":"CategoricalTickFormatter","id":"p1019"},"major_label_orientation":1.2,"major_label_policy":{"type":"object","name":"AllLabels","id":"p1020"}}}],"center":[{"type":"object","name":"Grid","id":"p1021","attributes":{"axis":{"id":"p1017"}}},{"type":"object","name":"Grid","id":"p1026","attributes":{"dimension":1,"axis":{"id":"p1022"}}}]}}],["all_data",{"type":"map","entries":[["Academic Pressure",{"type":"map","entries":[["x",[["0.0","Not Depressed"],["0.0","Depressed"],["1.0","Not Depressed"],["1.0","Depressed"],["2.0","Not Depressed"],["2.0","Depressed"],["3.0","Not Depressed"],["3.0","Depressed"],["4.0","Not Depressed"],["4.0","Depressed"],["5.0","Not Depressed"],["5.0","Depressed"]]],["percent",[55.55555555555556,44.44444444444444,80.58737762966048,19.412622370339513,62.51795117280996,37.48204882719005,39.84186545162155,60.15813454837845,23.860329776915616,76.1396702230844,13.913595933926304,86.0864040660737]]]}],["Study Satisfaction",{"type":"map","entries":[["x",[["0.0","Not Depressed"],["0.0","Depressed"],["1.0","Not Depressed"],["1.0","Depressed"],["2.0","Not Depressed"],["2.0","Depressed"],["3.0","Not Depressed"],["3.0","Depressed"],["4.0","Not Depressed"],["4.0","Depressed"],["5.0","Not Depressed"],["5.0","Depressed"]]],["percent",[40.0,60.0,29.242340854889008,70.75765914511098,35.45734840698869,64.5426515930113,42.39821336540113,57.60178663459886,48.671174713005186,51.32882528699481,52.78154681139756,47.218453188602446]]]}],["Sleep Duration",{"type":"map","entries":[["x",[["Less than 5 hours","Not Depressed"],["Less than 5 hours","Depressed"],["5-6 hours","Not Depressed"],["5-6 hours","Depressed"],["7-8 hours","Not Depressed"],["7-8 hours","Depressed"],["More than 8 hours","Not Depressed"],["More than 8 hours","Depressed"],["Others","Not Depressed"],["Others","Depressed"]]],["percent",[35.48736462093863,64.51263537906136,43.11822739770338,56.88177260229662,40.49823032943098,59.50176967056902,49.073461283917936,50.92653871608207,50.0,50.0]]]}],["Dietary Habits",{"type":"map","entries":[["x",[["Healthy","Not Depressed"],["Healthy","Depressed"],["Moderate","Not Depressed"],["Moderate","Depressed"],["Others","Not Depressed"],["Others","Depressed"],["Unhealthy","Not Depressed"],["Unhealthy","Depressed"]]],["percent",[54.60724088354464,45.392759116455366,43.97742163088398,56.02257836911602,33.33333333333333,66.66666666666666,29.272075215663467,70.72792478433652]]]}],["Work/Study Hours",{"type":"map","entries":[["x",[["0.0","Not Depressed"],["0.0","Depressed"],["1.0","Not Depressed"],["1.0","Depressed"],["2.0","Not Depressed"],["2.0","Depressed"],["3.0","Not Depressed"],["3.0","Depressed"],["4.0","Not Depressed"],["4.0","Depressed"],["5.0","Not Depressed"],["5.0","Depressed"],["6.0","Not Depressed"],["6.0","Depressed"],["7.0","Not Depressed"],["7.0","Depressed"],["8.0","Not Depressed"],["8.0","Depressed"],["9.0","Not Depressed"],["9.0","Depressed"],["10.0","Not Depressed"],["10.0","Depressed"],["11.0","Not Depressed"],["11.0","Depressed"],["12.0","Not Depressed"],["12.0","Depressed"]]],["percent",[64.47058823529412,35.529411764705884,59.652173913043484,40.34782608695652,56.22641509433962,43.77358490566038,52.585034013605444,47.414965986394556,49.504337050805454,50.49566294919455,45.5246913580247,54.4753086419753,42.679127725856695,57.3208722741433,41.22938530734633,58.77061469265368,37.50498206456756,62.49501793543244,40.07897334649556,59.92102665350444,29.641001417099673,70.35899858290034,32.2268326417704,67.7731673582296,31.62042875157629,68.37957124842372]]]}],["Financial Stress",{"type":"map","entries":[["x",[["1.0","Not Depressed"],["1.0","Depressed"],["2.0","Not Depressed"],["2.0","Depressed"],["3.0","Not Depressed"],["3.0","Depressed"],["4.0","Not Depressed"],["4.0","Depressed"],["5.0","Not Depressed"],["5.0","Depressed"],["?","Not Depressed"],["?","Depressed"]]],["percent",[68.13122437024019,31.86877562975981,57.02430349733254,42.97569650266746,41.06391121316494,58.93608878683505,30.909090909090907,69.0909090909091,18.7192851824274,81.2807148175726,66.66666666666666,33.33333333333333]]]}]]}]]},"code":"\n        const feature = cb_obj.value;\n        const data = all_data[feature];\n        source.data = { x: data.x, percent: data.percent };\n        plot.x_range.factors = data.x;\n        plot.title.text = `Depression % by ${feature}`;\n        source.change.emit();\n    "}}]]]},"title":"Select Feature","options":["Academic Pressure","Study Satisfaction","Sleep Duration","Dietary Habits","Work/Study Hours","Financial Stress"],"value":"Academic Pressure"}},{"id":"p1005"}]}}]}}
+    </script>
+    <script type="text/javascript">
+      (function() {
+        const fn = function() {
+          Bokeh.safely(function() {
+            (function(root) {
+              function embed_document(root) {
+              const docs_json = document.getElementById('c96689ba-020d-4c4d-8902-22a5ccf1abd1').textContent;
+              const render_items = [{"docid":"f9a3c549-514a-4a92-b15f-1dbc6323e512","roots":{"p1038":"f78a8c61-19c7-4e93-aa6b-0a88ada8a701"},"root_ids":["p1038"]}];
+              root.Bokeh.embed.embed_items(docs_json, render_items);
+              }
+              if (root.Bokeh !== undefined) {
+                embed_document(root);
+              } else {
+                let attempts = 0;
+                const timer = setInterval(function(root) {
+                  if (root.Bokeh !== undefined) {
+                    clearInterval(timer);
+                    embed_document(root);
+                  } else {
+                    attempts++;
+                    if (attempts > 100) {
+                      clearInterval(timer);
+                      console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                    }
+                  }
+                }, 10, root)
+              }
+            })(window);
+          });
+        };
+        if (document.readyState != "loading") fn();
+        else document.addEventListener("DOMContentLoaded", fn);
+      })();
+    </script>
+  </body>
+</html>
