@@ -458,62 +458,20 @@
       </section>
 
       <section id="dataset" class="visualization-section">
-        <h3>Understanding Our Data</h3>
-
+        <h3>A Look Behind the Numbers</h3>
+      
         <p>
-          Before creating visualizations, we wanted to understand what our
-          dataset really represents. Each row in our data shows one student's
-          life - their sleep habits, stress levels, and mental health. Each
-          number tells part of a story about nearly 28,000 university students
-          across India. Like most real-world data, these needed to be prepared
-          carefully.
+          Behind every data point in our study is a student with a unique story, someone balancing deadlines, exams, friendships, family expectations, and uncertain futures. With nearly 28,000 responses collected from across India, the datadoesn’t just reflect numbers; it captures lived experiences. And while no dataset can fully convey what it feels like to lie awake at night from anxiety, or to show up to class while mentally exhausted, patterns begin to appear when thousands of students speak together.
         </p>
-
+      
         <p>
-          The dataset had no missing values, which is unusual and helpful.
-          However, many columns had long labels and text responses instead of
-          numbers. To make the data easier to analyze while keeping its meaning
-          intact, we made several improvements.
+          The students who responded to this survey came from all over the country, from large cities like Mumbai and Delhi to smaller towns scattered across India’s educational landscape. Their responses create a rich mosaic of modern student life: when they sleep, how they eat, whether they feel supported at home, and how often they feel overwhelmed. It allows us to examine not only how widespread mental health challenges are, but also who is most affected, and under what conditions.
         </p>
-
-        <div class="article-highlight">
-          <h4>How We Prepared the Data</h4>
-          <ul style="padding-left: 20px; margin-bottom: 20px">
-            <li>
-              <strong>Making column names simpler:</strong> We changed long
-              names like <em>"Have you ever had suicidal thoughts?"</em> to
-              shorter ones like <code>Suicidal_Thoughts</code>.
-            </li>
-            <li>
-              <strong>Converting text to numbers:</strong> Yes/No answers became
-              1 for "Yes" and 0 for "No." We did this for columns like
-              <code>Suicidal_Thoughts</code> and <code>Family_History</code>.
-            </li>
-            <li>
-              <strong>Creating numerical scales:</strong> For categories like
-              <code>Financial_Stress</code>, we used numbers (Low = 1, Medium =
-              2, High = 3) to make comparisons easier.
-            </li>
-            <li>
-              <strong>Standardizing time measurements:</strong> Sleep
-              descriptions like "5–6 hours" became numeric values (5 hours) for
-              consistency.
-            </li>
-            <li>
-              <strong>Creating separate columns for categories:</strong>
-              Variables like <code>Gender</code> and
-              <code>Profession</code> were split into multiple yes/no columns
-              for better analysis.
-            </li>
-          </ul>
-        </div>
-
+      
         <p>
-          These changes made the dataset much easier to work with, allowing us
-          to better explore how different aspects of student life relate to
-          mental health.
-        </p>
+          But before we could begin interpreting what these patterns meant, we needed to understand the bigger picture. Who took this survey? Are they representative of India's university population? What kinds of stressors or supports do they report? The following charts helped us orient in terms of perspective.             It begins with understanding the people behind the responses, their ages, their backgrounds, and how many of them are quietly struggling beneath the surface.
 
+        </p>      
         <div
           style="
             display: flex;
@@ -533,25 +491,16 @@
             <img
               src="plots/gender_distribution.png"
               alt="Gender distribution"
-              style="
-                width: 300px;
-                height: auto;
-                border-radius: 6px;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-              "
+              style="width: 300px; height: auto; border-radius: 6px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1)"
             />
             <div>
-              <h4 style="margin-bottom: 10px; color: #3a5e8c">
-                Gender Distribution
-              </h4>
+              <h4 style="margin-bottom: 10px; color: #3a5e8c">Gender Balance</h4>
               <p style="max-width: 600px">
-                This chart shows we have similar numbers of male and female
-                students in our dataset. This balance makes our gender
-                comparisons more reliable throughout the analysis.
+                Almost equal number of male and female students participating in the survey. This balance ensures that our findings aren’t biased by an overrepresentation of one gender. It also enables us to look more closely at how gender identity might influence how students experience depression, stress, and coping strategies. Nowadays men often face stigma for seeking emotional help and women may be overburdened by layered expectations.
               </p>
             </div>
           </div>
-
+      
           <div
             style="
               display: flex;
@@ -563,27 +512,16 @@
             <img
               src="plots/age_distribution.png"
               alt="Age distribution"
-              style="
-                width: 300px;
-                height: auto;
-                border-radius: 6px;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-              "
+              style="width: 300px; height: auto; border-radius: 6px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1)"
             />
             <div>
-              <h4 style="margin-bottom: 10px; color: #3a5e8c">
-                Age Distribution
-              </h4>
+              <h4 style="margin-bottom: 10px; color: #3a5e8c">The Age Window</h4>
               <p style="max-width: 600px">
-                Most students in our dataset are between 19 and 25 years old,
-                which matches typical university ages. This makes our findings
-                particularly relevant for understanding challenges students face
-                during their university years.
+                Most students in the survey fall between the ages of 19 and 25, the years when young adults become adult. This stage is marked by high academic pressure, career planning, identity development and emotional shifts. The data reflects the psychological effects that higher education can do during some of the most formative years of a students' life.
               </p>
             </div>
           </div>
-
-          <div
+                <div
             style="
               display: flex;
               align-items: center;
@@ -594,26 +532,19 @@
             <img
               src="plots/depression_pie_chart.png"
               alt="Depression prevalence pie chart"
-              style="
-                width: 300px;
-                height: auto;
-                border-radius: 6px;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-              "
+              style="width: 300px; height: auto; border-radius: 6px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1)"
             />
             <div>
-              <h4 style="margin-bottom: 10px; color: #3a5e8c">
-                Prevalence of Depression
-              </h4>
+              <h4 style="margin-bottom: 10px; color: #3a5e8c">The Most Concerning Finding</h4>
               <p style="max-width: 600px">
-                Over half of the students in our survey reported experiencing
-                depression symptoms. This finding is the foundation of our
-                research and guides our deeper analysis.
+                Over half of the students reported symptoms of depression. This is not a small subgroup, it is the majority. It's a signal that something fundamental about student life in India demands urgent attention.
               </p>
             </div>
           </div>
         </div>
       </section>
+      
+      
 
       <section id="prevalence" class="visualization-section">
         <h2>Depression and Life Risk Among Students</h2>
@@ -765,14 +696,17 @@
       </section>  
       <section id="geography" class="visualization-section">
         <h2>Regional Patterns: Depression Across India</h2>
+      
         <p>
-          Where students study may affect how they feel. We mapped depression
-          rates across Indian cities using our survey data. Each dot on the map
-          represents a city, colored from green to red based on how many
-          students reported depression symptoms. Darker red means more students
-          in that location reported suicidal thoughts.
+          Where a student lives and studies can have a profound impact on their mental wellbeing. From sprawling urban campuses to quieter regional colleges, the academic experience is deeply shaped by geography. To uncover whether location plays a role in depression rates, we visualized our data on an interactive map of India, not just to show where students are, but to better understand how mental health challenges are distributed across regions.
         </p>
-
+      
+        <p>
+          To make this map possible, we combined our student depression dataset with geographic information from the 
+          <a href="https://www.kaggle.com/datasets/parulpandey/indian-cities-database" target="_blank">
+            Indian Cities Database</a>. This publicly available dataset provided accurate latitude and longitude coordinates for hundreds of Indian cities, allowing us to match each student response with a place on the map. What emerged was more than data, it was a national picture of student mental health.
+        </p>
+      
         <div
           class="visualization-container"
           id="map-container"
@@ -785,6 +719,7 @@
             style="border: none; border-radius: 8px; display: block"
           ></iframe>
         </div>
+      
         <p
           style="
             font-style: italic;
@@ -796,30 +731,29 @@
           Interactive map: Click on a city to see depression rates and student
           counts.
         </p>
-
+      
         <div class="visualization-description">
           <p>
-            The map shows clear patterns of mental health across India. Many
-            large cities show higher rates of student depression. In some urban
-            areas, more than half of the surveyed students reported depression
-            symptoms.
+            In major cities such as Ahmedabad (67.3%), Hyderabad (67.0%), and Patna (63.2%), more than 6 in 10 students reported symptoms of depression. Other large urban centers like Kolkata, Delhi, Bangalore, Indore, and Chennai all show rates above 59%. This suggests that academic intensity, urban stressors, and cost of living pressures may be taking a significant toll on students in India's largest educational hubs.
+          </p>
+      
+          <p>
+            Smaller cities and towns in the dataset shows similarity to the big cities. Even so when we focus only on cities with hundreds of students surveyed, the high prevalence remains alarming. For instance, Thane (59.1%), Meerut (59.8%), and Faridabad (58.8%) also show majority-level rates of depression.
+          </p>
+      
+          <p>
+            On the other end of the spectrum, cities like Nashik (52.8%), Jaipur (52.4%), and Kanpur (54.2%) are only slightly below the national average. Very few cities in the dataset, even those with large student populations report rates below 50%. Mumbai, often considered a highly competitive city, still shows more than half of students (55.2%) experiencing symptoms.
+          </p>
+      
+          <p>
+            While we cannot say that geography alone determines mental health, this map reveals how widespread and systemic student distress has become. These dots on the map are represent classrooms, study groups, late-night hostel conversations, and young people quietly battling pressures that often go unseen.
+            If this map teaches us anything, it's that the student mental health crisis in India is not confined to any single place. It is a national issue, one that calls for national attention.
+
           </p>
 
-          <p>
-            While this map doesn't explain why students in certain areas
-            struggle more, it provides valuable geographic insights. Cities with
-            more stressful environments—whether from higher living costs,
-            academic competition, or fewer support systems—often show more
-            depression cases on our map.
-          </p>
-
-          <p>
-            As you explore the map, you can see these patterns emerge. Each dot
-            represents real students who face both academic demands and mental
-            health challenges.
-          </p>
         </div>
       </section>
+      
       <section id="summary">
         <h2>Summary</h2>
         <p>
